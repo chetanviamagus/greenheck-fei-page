@@ -123,7 +123,9 @@
       .text-white {
         color: #fff;
       }
-
+      .no-underline {
+        text-decoration-line: none;
+      }
       /* Font Families */
       .font-hcb {
         font-family: "Helvetica-Condensed-Bold", ui-sans-serif, system-ui,
@@ -420,6 +422,47 @@
         flex-shrink: 1;
         flex-basis: 0%;
       }
+
+      .accordion-container {
+        margin-top: 20px;
+      }
+      .accordion-item,
+      .sub-accordion-item {
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+      }
+      .accordion-question,
+      .sub-accordion-question {
+        background-color: #f1f1f1;
+        padding: 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .accordion-answer,
+      .sub-accordion-answer {
+        padding: 10px;
+        display: none;
+      }
+      .sub-accordion-item {
+        margin-left: 20px;
+      }
+      .toggle-icon {
+        font-size: 18px;
+      }
+      .show-all-btn,
+      .show-more-btn {
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      .hidden {
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -711,7 +754,261 @@
         >
           Additional Resources
         </h2>
+        <h3 class="font-bold font-hcb text-5-5 leading-6-5 pb-2-5">
+          Industry Links
+        </h3>
+        <div class="flex flex-col gap-1-5 pl-5">
+          <a
+            href="https://www.greenheck.com/"
+            class="font-medium font-hce text-3-75 text-gh-blue no-underline"
+            >Air Movement Control Association</a
+          >
+          <a
+            href="https://www.greenheck.com/"
+            class="font-medium font-hce text-3-75 text-gh-blue no-underline"
+            >ASHRAE Journal</a
+          >
+        </div>
+        <div class="flex justify-between">
+          <h3 class="font-bold font-hcb text-5-5 leading-6-5 pb-2-5">FAQ</h3>
+          <button class="show-all-btn" onclick="toggleAll()">Show All</button>
+        </div>
+        <div class="pl-5">
+          <div class="accordion-container">
+            <!-- FAQ items will be dynamically added here -->
+          </div>
+          <button class="show-more-btn" onclick="showMore()">Show More</button>
+        </div>
       </div>
     </div>
+    <script>
+      const accordionData = [
+        {
+          question: "What is FEI?",
+          answer:
+            "FEI stands for Fan Energy Index, a metric used to rate the energy efficiency of fans.",
+          subQuestions: [
+            {
+              question: "How is FEI calculated?",
+              answer:
+                "FEI is calculated by comparing the electrical input power of a fan to the reference electrical input power.",
+            },
+            {
+              question: "What's a good FEI value?",
+              answer:
+                "Generally, an FEI greater than 1.0 indicates better efficiency than the baseline.",
+            },
+          ],
+        },
+        {
+          question: "Does FEI apply to all types of fans?",
+          answer:
+            "FEI applies to most commercial and industrial fans, but there are some exceptions.",
+          subQuestions: [],
+        },
+        {
+          question: "What are the benefits of using high FEI fans?",
+          answer:
+            "High FEI fans can lead to energy savings, lower operating costs, and reduced environmental impact.",
+          subQuestions: [],
+        },
+        {
+          question: "Are there regulations requiring minimum FEI values?",
+          answer:
+            "Yes, some regions have adopted regulations specifying minimum FEI values for certain fan types and sizes.",
+          subQuestions: [
+            {
+              question: "Which regions have FEI regulations?",
+              answer:
+                "As of 2024, several U.S. states and some countries have adopted FEI regulations.",
+            },
+            {
+              question: "When do these regulations take effect?",
+              answer:
+                "Implementation dates vary by region, but many are set to take effect between 2022 and 2025.",
+            },
+          ],
+        },
+        {
+          question: "How does FEI relate to fan selection?",
+          answer:
+            "FEI can guide engineers in selecting more energy-efficient fans for specific applications.",
+          subQuestions: [],
+        },
+        {
+          question: "Can FEI be improved for existing fans?",
+          answer:
+            "In some cases, FEI can be improved through proper maintenance or system optimization.",
+          subQuestions: [],
+        },
+        {
+          question: "What's the difference between FEI and FEG?",
+          answer:
+            "FEI provides a more comprehensive efficiency metric compared to the older Fan Efficiency Grade (FEG) system.",
+          subQuestions: [],
+        },
+        {
+          question: "How often should FEI be recalculated?",
+          answer:
+            "FEI should be recalculated if there are significant changes to the fan or its operating conditions.",
+          subQuestions: [],
+        },
+        {
+          question: "Are there tools available to calculate FEI?",
+          answer:
+            "Yes, many fan manufacturers provide online tools or software to calculate FEI for their products.",
+          subQuestions: [],
+        },
+        {
+          question: "How does FEI impact building energy codes?",
+          answer:
+            "Many building energy codes are incorporating FEI requirements to promote energy efficiency.",
+          subQuestions: [],
+        },
+        {
+          question: "Can FEI be used for residential fans?",
+          answer:
+            "FEI is primarily used for commercial and industrial fans, not typically for residential applications.",
+          subQuestions: [],
+        },
+        {
+          question: "What data is needed to determine FEI?",
+          answer:
+            "Fan power, airflow, pressure, and speed are typically needed to calculate FEI.",
+          subQuestions: [],
+        },
+        {
+          question: "How does motor efficiency affect FEI?",
+          answer:
+            "Motor efficiency is factored into FEI calculations, so more efficient motors can lead to better FEI values.",
+          subQuestions: [],
+        },
+        {
+          question: "Is FEI affected by system effects?",
+          answer:
+            "FEI is based on standalone fan performance and doesn't account for system effects directly.",
+          subQuestions: [],
+        },
+        {
+          question: "How do variable speed drives impact FEI?",
+          answer:
+            "Variable speed drives can improve overall system efficiency but don't directly affect the FEI rating.",
+          subQuestions: [],
+        },
+        {
+          question: "Are there exemptions to FEI requirements?",
+          answer:
+            "Yes, some fan types and sizes may be exempt from FEI requirements depending on the specific regulations.",
+          subQuestions: [],
+        },
+        {
+          question: "How does FEI relate to overall HVAC system efficiency?",
+          answer:
+            "While FEI focuses on fan efficiency, it contributes to overall HVAC system efficiency by promoting energy-efficient fan selection.",
+          subQuestions: [],
+        },
+        {
+          question: "Can fans with low FEI still be used?",
+          answer:
+            "In regions with FEI regulations, fans below the minimum required FEI may not be permitted for certain applications.",
+          subQuestions: [],
+        },
+        {
+          question: "How do environmental conditions affect FEI?",
+          answer:
+            "FEI is typically calculated at standard air conditions, but actual performance may vary with environmental conditions.",
+          subQuestions: [],
+        },
+        {
+          question: "Is FEI used globally?",
+          answer:
+            "While FEI is gaining global recognition, adoption rates and regulations vary by country and region.",
+          subQuestions: [],
+        },
+      ];
+
+      let visibleItems = 5;
+
+      function createAccordionItem(item, isSubItem = false) {
+        const accordionItem = document.createElement("div");
+        accordionItem.className = isSubItem
+          ? "sub-accordion-item"
+          : "accordion-item";
+
+        const question = document.createElement("div");
+        question.className = isSubItem
+          ? "sub-question-accordion-container"
+          : "question-accordion-container";
+        question.innerHTML = `<span>${item.question}</span><span class="toggle-icon">+</span>`;
+        question.onclick = function () {
+          toggleAnswer(this);
+        };
+
+        const answer = document.createElement("div");
+        answer.className = isSubItem
+          ? "sub-accordion-answer"
+          : "accordion-answer";
+        answer.textContent = item.answer;
+
+        accordionItem.appendChild(question);
+        accordionItem.appendChild(answer);
+
+        if (!isSubItem && item.subQuestions.length > 0) {
+          item.subQuestions.forEach((subItem) => {
+            accordionItem.appendChild(createAccordionItem(subItem, true));
+          });
+        }
+
+        return accordionItem;
+      }
+
+      function populateAccordion() {
+        const container = document.querySelector(".accordion-container");
+        container.innerHTML = "";
+        accordionData.slice(0, visibleItems).forEach((item) => {
+          container.appendChild(createAccordionItem(item));
+        });
+      }
+
+      function toggleAnswer(element) {
+        const answer = element.nextElementSibling;
+        const icon = element.querySelector(".toggle-icon");
+        if (answer.style.display === "block") {
+          answer.style.display = "none";
+          icon.textContent = "+";
+        } else {
+          answer.style.display = "block";
+          icon.textContent = "-";
+        }
+      }
+
+      function toggleAll() {
+        const allQuestions = document.querySelectorAll(
+          ".question-accordion-container, .sub-question-accordion-container"
+        );
+        const btn = document.querySelector(".show-all-btn");
+        const isShowingAll = btn.textContent === "Hide All";
+
+        allQuestions.forEach((question) => {
+          const answer = question.nextElementSibling;
+          const icon = question.querySelector(".toggle-icon");
+          answer.style.display = isShowingAll ? "none" : "block";
+          icon.textContent = isShowingAll ? "+" : "-";
+        });
+
+        btn.textContent = isShowingAll ? "Show All" : "Hide All";
+      }
+
+      function showMore() {
+        visibleItems += 5;
+        populateAccordion();
+        if (visibleItems >= accordionData.length) {
+          document.querySelector(".show-more-btn").classList.add("hidden");
+        }
+      }
+
+      // Initial population of FAQ
+      populateAccordion();
+    </script>
   </body>
 </html>
