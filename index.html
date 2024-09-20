@@ -186,21 +186,29 @@
       .pb-2-5 {
         padding-bottom: 0.625rem; /* 10px */
       }
-      .px-7-5 {
-        padding-left: 1.875rem; /* 30px */
-        padding-right: 1.875rem; /* 30px */
-      }
-      .py-5 {
-        padding-top: 1.25rem; /* 20px */
-        padding-bottom: 1.25rem; /* 20px */
+      .px-5 {
+        padding-left: 1.25rem; /* 20px */
+        padding-right: 1.25rem; /* 20px */
       }
       .px-6 {
         padding-left: 1.5rem; /* 24px */
         padding-right: 1.5rem; /* 24px */
       }
+      .py-2-25 {
+        padding-top: 0.5625rem; /* 9px */
+        padding-bottom: 0.5625rem; /* 9px */
+      }
+      .py-5 {
+        padding-top: 1.25rem; /* 20px */
+        padding-bottom: 1.25rem; /* 20px */
+      }
+      .px-7-5 {
+        padding-left: 1.875rem; /* 30px */
+        padding-right: 1.875rem; /* 30px */
+      }
       .py-17-5 {
         padding-top: 4.375rem; /* 70px */
-        padding-bottom: 4.375rem;
+        padding-bottom: 4.375rem; /* 70px */
       }
       .mt-4 {
         margin-top: 1rem; /* 16px */
@@ -426,11 +434,7 @@
       .accordion-container {
         margin-top: 20px;
       }
-      .accordion-item,
-      .sub-accordion-item {
-        border: 1px solid #ddd;
-        margin-bottom: 10px;
-      }
+
       .accordion-question,
       .sub-accordion-question {
         background-color: #f1f1f1;
@@ -937,8 +941,8 @@
 
         const question = document.createElement("div");
         question.className = isSubItem
-          ? "sub-question-accordion-container"
-          : "question-accordion-container";
+          ? "sub-question-accordion-container font-bold font-hcb text-5-5 text-white bg-gh-blue py-2-25 px-5"
+          : "question-accordion-container font-bold font-hcb text-5-5 text-white bg-gh-blue py-2-25 px-5";
         question.innerHTML = `<span>${item.question}</span><span class="toggle-icon">+</span>`;
         question.onclick = function () {
           toggleAnswer(this);
@@ -964,9 +968,41 @@
 
       function populateAccordion() {
         const container = document.querySelector(".accordion-container");
+        const existingItems = Array.from(container.children);
+        const existingStates = existingItems.map((item) => ({
+          isOpen:
+            item.querySelector(".accordion-answer").style.display === "block",
+          subStates: Array.from(
+            item.querySelectorAll(".sub-accordion-answer")
+          ).map((sub) => sub.style.display === "block"),
+        }));
+
         container.innerHTML = "";
-        accordionData.slice(0, visibleItems).forEach((item) => {
-          container.appendChild(createAccordionItem(item));
+        accordionData.slice(0, visibleItems).forEach((item, index) => {
+          const accordionItem = createAccordionItem(item);
+          container.appendChild(accordionItem);
+
+          if (index < existingStates.length) {
+            const state = existingStates[index];
+            const mainAnswer = accordionItem.querySelector(".accordion-answer");
+            const subAnswers = accordionItem.querySelectorAll(
+              ".sub-accordion-answer"
+            );
+
+            if (state.isOpen) {
+              mainAnswer.style.display = "block";
+              accordionItem.querySelector(".toggle-icon").textContent = "-";
+            }
+
+            subAnswers.forEach((subAnswer, subIndex) => {
+              if (state.subStates[subIndex]) {
+                subAnswer.style.display = "block";
+                subAnswer.previousElementSibling.querySelector(
+                  ".toggle-icon"
+                ).textContent = "-";
+              }
+            });
+          }
         });
       }
 
