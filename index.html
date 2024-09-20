@@ -1,0 +1,717 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* Global Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Base HTML Settings */
+      html {
+        font-size: 16px; /* Base font size in pixels */
+      }
+
+      /* Font Face Definitions */
+      @font-face {
+        font-family: "Helvetica";
+        src: url(https://www.greenheck.com/Content/GreenheckStyles/fonts/Helvetica.otf);
+      }
+
+      @font-face {
+        font-family: "Helvetica-Bold";
+        src: url(https://www.greenheck.com/Content/GreenheckStyles/fonts/Helvetica-Bold.ttf);
+      }
+
+      @font-face {
+        font-family: "HelveticaCE";
+        src: url(https://www.greenheck.com/Content/GreenheckStyles/fonts/HelveticaCE.otf);
+      }
+
+      @font-face {
+        font-family: "HelveticaCE-CondBold";
+        src: url(https://www.greenheck.com/Content/GreenheckStyles/fonts/HelveticaCE-CondBold.otf);
+      }
+
+      @font-face {
+        font-family: "HelveticaCE-Narrow";
+        src: url(https://www.greenheck.com/Content/GreenheckStyles/fonts/HelveticaCE-Narrow.otf);
+      }
+
+      @font-face {
+        font-family: "HelveticaConBQ-Medium";
+        src: url(https://www.greenheck.com/Content/GreenheckStyles/fonts/HelveticaConBQ-Medium.otf);
+      }
+
+      @font-face {
+        font-family: "Helvetica-Condensed";
+        src: url(https://www.greenheck.com/Content/GreenheckStyles/fonts/Helvetica-Condensed.otf);
+      }
+
+      @font-face {
+        font-family: "Helvetica-Condensed-Black";
+        src: url(https://www.greenheck.com/Content/GreenheckStyles/fonts/Helvetica-Condensed-Black.otf);
+      }
+
+      @font-face {
+        font-family: "Helvetica-Condensed-Bold";
+        src: url(https://www.greenheck.com/Content/GreenheckStyles/fonts/Helvetica-Condensed-Bold.otf);
+      }
+
+      @font-face {
+        font-family: "Helvetica-Narrow-Bold";
+        src: url(https://www.greenheck.com/Content/GreenheckStyles/fonts/Helvetica-Narrow-Bold.otf);
+      }
+
+      @font-face {
+        font-family: "Helvetica-Narrow-Oblique";
+        src: url(https://www.greenheck.com/Content/GreenheckStyles/fonts/Helvetica-Narrow-Oblique.otf);
+      }
+
+      /* Typography Utilities */
+      /* Text Utilities */
+      .text-3-5 {
+        font-size: 0.875rem; /* 14px */
+      }
+      .text-12 {
+        font-size: 3rem; /* 48px */
+      }
+      .text-3-75 {
+        font-size: 0.9375rem; /* 15px */
+      }
+      .text-4 {
+        font-size: 1rem; /* 16px */
+      }
+      .text-5-5 {
+        font-size: 1.375rem; /* 22px */
+      }
+      .text-5-75 {
+        font-size: 1.4375rem; /* 23px */
+      }
+      .text-6 {
+        font-size: 1.5rem; /* 24px */
+      }
+
+      .text-9 {
+        font-size: 2.25rem; /* 36px */
+      }
+      .leading-5-25 {
+        line-height: 1.3125rem; /* 21px */
+      }
+      .leading-6 {
+        line-height: 1.5rem; /* 24px */
+      }
+      .leading-6-5 {
+        line-height: 1.625rem; /* 26px */
+      }
+      .font-bold {
+        font-weight: 700;
+      }
+      .font-medium {
+        font-weight: 500;
+      }
+      .text-charcoal-gray {
+        color: #57585a;
+      }
+      .text-gh-blue {
+        color: #075697;
+      }
+      .text-white {
+        color: #fff;
+      }
+
+      /* Font Families */
+      .font-hcb {
+        font-family: "Helvetica-Condensed-Bold", ui-sans-serif, system-ui,
+          sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+          "Noto Color Emoji";
+      }
+      .font-hce {
+        font-family: "HelveticaCE", ui-sans-serif, system-ui, sans-serif,
+          "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+          "Noto Color Emoji";
+      }
+
+      /* Text Transformations */
+      .uppercase {
+        text-transform: uppercase;
+      }
+      .text-center {
+        text-align: center;
+      }
+
+      /* Backgrounds */
+      .bg-cloud-full {
+        background-image: url(https://ghsitefinitytesting.blob.core.windows.net/atg-cms-work/images/default-source/landing-pages/fei-page/cloud-background_2x.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .bg-white {
+        background-color: #fff; /* White background color */
+      }
+      .bg-gh-blue {
+        background-color: #075697; /* Blue background color */
+      }
+      .bg-soft-silver {
+        background-color: #f6f6f6;
+      }
+
+      /* Spacing Utilities */
+      .py-4-5 {
+        padding-top: 1.125rem; /* 18px */
+        padding-bottom: 1.125rem; /* 18px */
+      }
+      .px-4-5 {
+        padding-left: 1.125rem; /* 18px */
+        padding-right: 1.125rem; /* 18px */
+      }
+      .py-2 {
+        padding-top: 0.5rem; /* 8px */
+        padding-bottom: 0.5rem; /* 8px */
+      }
+      .p-6 {
+        padding: 1.5rem; /* 24px */
+      }
+      .pb-1-5 {
+        padding-bottom: 0.375rem; /* 6px */
+      }
+
+      .pb-2-5 {
+        padding-bottom: 0.625rem; /* 10px */
+      }
+      .px-7-5 {
+        padding-left: 1.875rem; /* 30px */
+        padding-right: 1.875rem; /* 30px */
+      }
+      .py-5 {
+        padding-top: 1.25rem; /* 20px */
+        padding-bottom: 1.25rem; /* 20px */
+      }
+      .px-6 {
+        padding-left: 1.5rem; /* 24px */
+        padding-right: 1.5rem; /* 24px */
+      }
+      .py-17-5 {
+        padding-top: 4.375rem; /* 70px */
+        padding-bottom: 4.375rem;
+      }
+      .mt-4 {
+        margin-top: 1rem; /* 16px */
+      }
+      .mt-4-5 {
+        margin-top: 1.125rem; /* 18px */
+      }
+      .mt-7-5 {
+        margin-top: 1.875rem; /* 30px */
+      }
+      .mt-10 {
+        margin-top: 2.5rem; /* 40px */
+      }
+      .mb-1-5 {
+        margin-bottom: 0.375rem; /* 6px */
+      }
+      .mb-10 {
+        margin-bottom: 2.5rem; /* 40px */
+      }
+      .rounded {
+        border-radius: 0.25rem; /* 4px */
+      }
+      /* Flexbox Utilities */
+      .flex {
+        display: flex;
+      }
+      .flex-row {
+        flex-direction: row;
+      }
+      .flex-col {
+        flex-direction: column;
+      }
+      .items-start {
+        align-items: start;
+      }
+      .items-center {
+        align-items: center;
+      }
+      .justify-center {
+        justify-content: center;
+      }
+      .justify-between {
+        justify-content: space-between;
+      }
+      .grow {
+        flex-grow: 1;
+      }
+      .basis-0 {
+        flex-basis: 0px;
+      }
+      .shrink {
+        flex-shrink: 1;
+      }
+      /* Size Utilities */
+
+      .max-w-7-5 {
+        max-width: 1.875rem; /* 30px */
+      }
+      .max-w-64 {
+        max-width: 16rem; /* 256px  */
+      }
+      .max-w-108-75 {
+        max-width: 27.1875rem; /* 435px */
+      }
+      .max-w-131-75 {
+        max-width: 32.9375rem; /* 527px */
+      }
+      .max-w-151-75 {
+        max-width: 37.9375rem; /* 607px */
+      }
+      .max-w-205 {
+        max-width: 51.25rem; /* 820px */
+      }
+      .max-w-262 {
+        max-width: 65rem;
+      }
+      .max-w-328 {
+        max-width: 82rem; /* 1312px */
+      }
+      .w-full {
+        width: 100%;
+      }
+      .w-14 {
+        width: 3.5rem; /* 56px */
+      }
+      .max-w-31-5 {
+        max-width: 7.875rem; /* 126px */
+      }
+      .max-w-87 {
+        max-width: 21.75rem; /* 348px */
+      }
+      .max-w-full {
+        max-width: 100%;
+      }
+      .w-87 {
+        width: 21.75rem; /* 348px */
+      }
+      .max-w-98-75 {
+        max-width: 24.6875rem; /* 395px */
+      }
+      .h-full {
+        height: 100%;
+      }
+      .max-h-93-75 {
+        max-height: 23.4375rem; /* 375px */
+      }
+      .h-14 {
+        height: 3.5rem; /* 56px */
+      }
+      .h-17-5 {
+        height: 4.375rem; /* 70px */
+      }
+      .h-93-75 {
+        height: 23.4375rem; /* 375px */
+      }
+
+      /* Alignment and Gaps */
+      .m-auto {
+        margin: auto;
+      }
+      .m-b-2-25 {
+        margin-bottom: 0.5625rem; /* 9px */
+      }
+      .m-b-5 {
+        margin-bottom: 1.25rem; /* 20px */
+      }
+      .m-t-m-1-25 {
+        margin-top: -0.3125rem; /* -5px */
+      }
+      .gap-1-5 {
+        gap: 0.375rem; /* 6px */
+      }
+      .gap-3 {
+        gap: 0.75rem; /* 12px */
+      }
+      .gap-4 {
+        gap: 1rem; /* 16px */
+      }
+      .gap-5 {
+        gap: 1.25rem; /* 20px */
+      }
+      .gap-6 {
+        gap: 1.5rem; /* 24px */
+      }
+      .gap-7-5 {
+        gap: 1.875rem; /* 30px */
+      }
+      .gap-9 {
+        gap: 2.25rem; /* 36px */
+      }
+      .pl-5 {
+        padding-left: 1.25rem; /* 20px */
+      }
+
+      /* Box Shadow */
+      .box-shadow {
+        box-shadow: 0 0 10px rgba(208, 231, 242, 1);
+      }
+      /* Border */
+      .border-solid {
+        border-style: solid;
+      }
+      .border-gh-blue {
+        border-color: #075697;
+      }
+      .border-charcoal-gray {
+        border-color: #57585a;
+      }
+      .border-0 {
+        border-width: 0;
+      }
+      .border-1 {
+        border-width: 1px;
+      }
+      .border-b-1 {
+        border-bottom-width: 1px;
+      }
+      .text-center {
+        text-align: center;
+      }
+      /* Child Styles */
+      .child-b b {
+        font-family: "Helvetica-Condensed-Bold", ui-sans-serif, system-ui,
+          sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+          "Noto Color Emoji";
+        font-weight: 700;
+        font-size: 1.26rem;
+      }
+      .btn {
+        background-color: #d97a24;
+        border: 1px solid #d97a24;
+        color: white;
+        width: auto;
+        display: inline-block;
+        padding: 0.5rem 2rem;
+        font-size: 1rem;
+        border-radius: 8px;
+        font-weight: bold;
+        font-family: "Helvetica-Condensed-Bold", ui-sans-serif, system-ui,
+          sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+          "Noto Color Emoji";
+        transition: all 0.5s ease;
+      }
+      .btn:hover {
+        background-color: white;
+        border: 1px solid #d97a24;
+        color: #d97a24;
+        cursor: pointer;
+      }
+      /* Additional styles for the layout */
+      .flex-2 {
+        flex-grow: 2;
+        flex-shrink: 1;
+        flex-basis: 0%;
+      }
+
+      .flex-1 {
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 0%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="py-17-5 bg-cloud-full">
+      <h1
+        class="font-bold font-hcb text-12 text-center text-charcoal-gray uppercase"
+      >
+        Understanding Fan Energy Index (FEI)
+      </h1>
+      <p class="font-medium font-hce text-3-75 text-center text-charcoal-gray">
+        FEI is a true “wire-to-air” metric that rates the overall energy
+        consumption of a complete fan system.
+      </p>
+      <div class="flex flex-row max-w-262 m-auto">
+        <div
+          class="mt-7-5 flex items-center justify-center max-w-151-75 max-h-93-75 w-full h-93-75 bg-white box-shadow"
+        >
+          Video
+        </div>
+        <div class="mt-7-5 flex justify-center gap-7-5 flex-col">
+          <div class="flex flex-row items-start gap-5 pl-5 max-w-108-75">
+            <!--mt-7-5-->
+            <img
+              class="max-w-7-5 mt-1-5"
+              src="https://ghsitefinitytesting.blob.core.windows.net/atg-cms-work/images/default-source/landing-pages/fei-page/icon-metric.svg"
+              alt="Metric"
+            />
+            <p
+              class="child-b font-medium font-hce text-4-5 text-charcoal-gray leading-6"
+            >
+              FEI is a <b>ratio</b> that allows you to accurately compare energy
+              consumption between similar fan systems.
+            </p>
+          </div>
+          <div class="flex flex-row items-start gap-5 pl-5 max-w-108-75">
+            <!--mt-7-5-->
+            <img
+              class="max-w-7-5 mt-1-5"
+              src="https://ghsitefinitytesting.blob.core.windows.net/atg-cms-work/images/default-source/landing-pages/fei-page/icon-tool.svg"
+              alt="tool"
+            />
+            <p
+              class="child-b font-medium font-hce text-4-5 text-charcoal-gray leading-6"
+            >
+              FEI is a <b>tool</b> that helps you select the best fan system for
+              your application.
+            </p>
+          </div>
+          <div class="flex flex-row items-start gap-5 pl-5 max-w-108-75">
+            <!--mt-7-5-->
+            <img
+              class="max-w-7-5 mt-1-5"
+              src="https://ghsitefinitytesting.blob.core.windows.net/atg-cms-work/images/default-source/landing-pages/fei-page/icon-mandate.svg"
+              alt="mandate"
+            />
+            <p
+              class="child-b font-medium font-hce text-4-5 text-charcoal-gray leading-6"
+            >
+              FEI is a <b>mandate:</b> minimum FEI values are mandated by codes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="py-17-5 bg-soft-silver">
+      <div class="max-w-328 m-auto">
+        <h2
+          class="font-bold font-hcb text-12 text-charcoal-gray uppercase m-b-5"
+        >
+          What is FEI?
+        </h2>
+        <div class="flex gap-7-5">
+          <div class="flex flex-row gap-6 bg-white max-w-205 w-full p-6">
+            <img
+              class="max-w-64 w-full"
+              src="https://ghsitefinitytesting.blob.core.windows.net/atg-cms-work/images/default-source/landing-pages/fei-page/fei-chart_2x.png"
+              alt="FEI chart"
+            />
+            <div class="flex flex-col justify-center gap-3">
+              <div class="flex flex-row items-center gap-1-5 text-gh-blue">
+                <div class="font-hcb text-9">FEI</div>
+                <div class="font-hce text-6 m-t-m-1-25">=</div>
+                <div class="flex flex-col font-hcb text-5-5">
+                  <div class="border-solid border-gh-blue border-0 border-b-1">
+                    Baseline Electrical Input Power
+                  </div>
+                  <div class="">Actual Electrical Input Power</div>
+                </div>
+              </div>
+              <p class="font-medium font-hce text-3-75 text-charcoal-gray">
+                FEI is a wire-to-air metric that represents true electrical
+                power consumption by including motor, belt and bearing (if the
+                fan is belt-driven), and fan aerodynamic losses at an
+                application duty point.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-6 flex-col justify-center grow basis-0 shrink">
+            <p class="font-medium font-hce text-3-75 text-charcoal-gray">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
+              consequat tempus rhoncus. Vestibulum sed mi in metus ullamcorper
+              aliquet sit amet sit amet diam. Etiam consequat tempus rhoncus.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+            <button class="btn">DOWNLOAD THE GUIDE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="py-17-5 bg-white">
+      <div class="max-w-328 m-auto">
+        <h1
+          class="font-bold font-hcb text-12 text-charcoal-gray uppercase m-b-2-25"
+        >
+          BEYOND COMPLIANCE: APPLYING FEI IN FAN SYSTEM SELECTION
+        </h1>
+
+        <main class="flex gap-9">
+          <section class="flex-2">
+            <p class="font-medium font-hce text-3-75 text-charcoal-gray m-b-5">
+              Select a fan type based on the application, duty point, and space
+              constraints. Once you have determined the best fan type, use FEI
+              to optimize the energy consumption.
+            </p>
+            <h2
+              class="font-bold font-hcb text-5-75 text-white bg-gh-blue px-7-5 py-5"
+            >
+              ADVANTAGES OF USING FEI IN FAN SYSTEM SELECTION:
+            </h2>
+
+            <div class="w-full flex gap-6 mt-10">
+              <img
+                src="https://ghsitefinitytesting.blob.core.windows.net/atg-cms-work/images/default-source/landing-pages/fei-page/arrow-down-icon.png"
+                alt="Higher FEI values equate to lower energy consumption, operating costs, and carbon emissions."
+                class="h-14 w-14"
+              />
+              <div class="text-charcoal-gray">
+                <h3 class="font-bold font-hcb text-5-5 leading-6-5 pb-2-5">
+                  Higher FEI values equate to lower energy consumption,
+                  operating costs, and carbon emissions.
+                </h3>
+                <p class="font-medium font-hce text-3-75">
+                  The only way to tell which fan system uses the least energy is
+                  to look at the FEI value.
+                </p>
+              </div>
+            </div>
+
+            <div class="w-full flex gap-6 mt-10">
+              <img
+                src="https://ghsitefinitytesting.blob.core.windows.net/atg-cms-work/images/default-source/landing-pages/fei-page/chart-icon_2x.png"
+                alt="Higher FEI fans have a forgiving selection point."
+                class="h-14 w-14"
+              />
+              <div class="text-charcoal-gray">
+                <h3 class="font-bold font-hcb text-5-5 leading-6-5 pb-2-5">
+                  Higher FEI fans have a forgiving selection point.
+                </h3>
+                <p class="font-medium font-hce text-3-75">
+                  Selecting a fan with a higher FEI will give you a selection
+                  that is more central in the fan cure, giving you more room to
+                  speed the fan up if you need more air during test and balance.
+                </p>
+              </div>
+            </div>
+
+            <div class="w-full flex gap-6 mt-10">
+              <img
+                src="https://ghsitefinitytesting.blob.core.windows.net/atg-cms-work/images/default-source/landing-pages/fei-page/quiet-icon_2x.png"
+                alt=""
+                class="h-14 w-14"
+              />
+              <div class="text-charcoal-gray">
+                <h3 class="font-bold font-hcb text-5-5 leading-6-5 pb-2-5">
+                  Higher FEI fans are usually quieter.
+                </h3>
+                <p class="font-medium font-hce text-3-75">
+                  FEI may also correlate to better sound performance. As an
+                  example, if comparing two sidewall fans at different sizes,
+                  the larger fan operates at a slower speed where it is more
+                  efficient and has a higher FEI value. Because it is operating
+                  at a slower speed, it is also quieter.
+                </p>
+              </div>
+            </div>
+
+            <div class="w-full flex gap-6 mt-10">
+              <img
+                src="https://ghsitefinitytesting.blob.core.windows.net/atg-cms-work/images/default-source/landing-pages/fei-page/bar-chart-icon_2x.png"
+                alt="Higher FEI usually means you have selected a better fan for
+              your application."
+                class="h-14 w-14"
+              />
+              <div class="text-charcoal-gray">
+                <h3 class="font-bold font-hcb text-5-5 leading-6-5 pb-2-5">
+                  Higher FEI usually means you have selected a better fan for
+                  your application.
+                </h3>
+                <p class="font-medium font-hce text-3-75">
+                  During submittal review, a small difference in FEI could mean
+                  a significant difference between comparable fans. An FEI
+                  difference can indicate that fan controls have been left out
+                  or the motor type is incorrect. If you compromise on FEI,
+                  there will be tradeoffs.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <aside
+            class="flex-1 max-w-98-75 w-full border-1 border-solid border-gh-blue"
+          >
+            <div class="flex items-center gap-5 py-4-5 px-6">
+              <img
+                src="https://ghsitefinitytesting.blob.core.windows.net/atg-cms-work/images/default-source/landing-pages/fei-page/ecaps_icon_2x.png"
+                alt="Greenheck's eCAPS® online"
+                class="h-17-5"
+              />
+              <h2 class="text-5-5 leading-6-5 font-hcb uppercase">
+                CODE-COMPLIANT FAN SELECTION: ECAPS®
+              </h2>
+            </div>
+            <img
+              src="https://ghsitefinitytesting.blob.core.windows.net/atg-cms-work/images/default-source/landing-pages/fei-page/ecaps-beyond-compliance_1x.png"
+              alt="ecaps beyond compliance"
+              class="w-full"
+            />
+            <div class="flex flex-col bg-gh-blue px-6 py-4-5 gap-4">
+              <p class="text-3-75 leading-5-25 text-white font-medium font-hce">
+                Greenheck's eCAPS® online product selection suite includes FEI
+                ratings for hundreds of fan models, giving you a powerful
+                engineering tool to select the best fan system for your
+                application and comply with energy code requirements.
+              </p>
+              <div class="text-center">
+                <button class="btn">GO TO eCAPS</button>
+              </div>
+            </div>
+          </aside>
+        </main>
+      </div>
+    </div>
+    <div class="py-17-5 bg-soft-silver">
+      <div class="max-w-328 m-auto">
+        <div class="flex gap-7-5 justify-between">
+          <div class="flex flex-col items-start max-w-131-75">
+            <h3
+              class="font-bold text-charcoal-gray font-hcb text-5-5 leading-6-5 pb-1-5 uppercase"
+            >
+              Learn In Person
+            </h3>
+            <p class="font-medium font-hce text-3-75 text-charcoal-gray">
+              Reach out to your local representative to arrange a training on
+              optimizing fan energy performance using FEI at a convenient
+              location for you.
+            </p>
+            <button class="btn mt-4">FIND MY REP</button>
+          </div>
+          <div class="flex flex-col items-start max-w-131-75">
+            <h3
+              class="font-bold text-charcoal-gray font-hcb text-5-5 leading-6-5 pb-1-5 uppercase"
+            >
+              Stay informed
+            </h3>
+            <p class="font-medium font-hce text-3-75 text-charcoal-gray">
+              Keep up to date with the current changes in the industry.
+            </p>
+            <div class="flex gap-3">
+              <input
+                type="email"
+                placeholder="Email Address"
+                class="font-medium font-hce max-w-full w-87 text-3-75 mt-4 rounded border-charcoal-gray border-1 border-solid py-2 px-4-5"
+              />
+              <input
+                type="text"
+                placeholder="Zip Code"
+                class="font-medium font-hce text-3-75 w-full max-w-31-5 mt-4 rounded border-charcoal-gray border-1 border-solid py-2 px-4-5"
+              />
+            </div>
+            <button class="btn mt-4">SIGN UP FOR EMAILS</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="py-17-5 bg-white">
+      <div class="max-w-328 m-auto">
+        <h2
+          class="font-bold font-hcb text-12 text-charcoal-gray uppercase m-b-2-25"
+        >
+          Additional Resources
+        </h2>
+      </div>
+    </div>
+  </body>
+</html>

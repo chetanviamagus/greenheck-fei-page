@@ -1,0 +1,54 @@
+{
+  "formJson": {
+    "customValues": [
+      {
+        "fieldType": "email",
+        "fieldLabel": "Email ID",
+        "fieldValue": "chetan.nr@gmail.com",
+        "isCrmField": "Y",
+        "crmFieldType": "email",
+        "metaDataId": "31830"
+      },
+      {
+        "fieldType": "name",
+        "fieldLabel": "Name",
+        "fieldValue": "Chetan Kumar N",
+        "isCrmField": "Y",
+        "crmFieldType": "name",
+        "metaDataId": "31832"
+      },
+      {
+        "fieldType": "textinput",
+        "fieldLabel": "Contact Number",
+        "fieldValue": "09945621717",
+        "isCrmField": "N",
+        "crmFieldType": "N/A",
+        "metaDataId": "31833"
+      },
+      {
+        "fieldType": "selectbasic",
+        "fieldLabel": "Department",
+        "fieldValue": "Marketing & Sales",
+        "isCrmField": "N",
+        "crmFieldType": "N/A",
+        "metaDataId": "31834"
+      },
+      {
+        "fieldType": "filebutton",
+        "fieldLabel": "Upload Resume",
+        "fieldValue": "1726064908606-ikraftpdf.pdf",
+        "isCrmField": "N",
+        "crmFieldType": "N/A",
+        "metaDataId": "31835"
+      },
+      {
+        "fieldType": "textarea",
+        "fieldLabel": "Message",
+        "fieldValue": "",
+        "isCrmField": "N",
+        "crmFieldType": "N/A",
+        "metaDataId": "31836"
+      }
+    ]
+  }
+}
