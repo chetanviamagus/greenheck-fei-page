@@ -807,6 +807,12 @@
             >
               Show More
             </button>
+            <button
+              class="show-less-btn mt-7-5 mx-auto font-bold font-hcb text-5-5 border-0 cursor-pointer bg-none hidden"
+              onclick="showLess()"
+            >
+              Show Less
+            </button>
           </div>
         </div>
       </div>
@@ -984,9 +990,12 @@
         accordionItem.appendChild(answer);
 
         if (!isSubItem && item.subQuestions.length > 0) {
+          const subContainer = document.createElement("div");
+          subContainer.className = "sub-questions-container hidden";
           item.subQuestions.forEach((subItem) => {
-            accordionItem.appendChild(createAccordionItem(subItem, true));
+            subContainer.appendChild(createAccordionItem(subItem, true));
           });
+          accordionItem.appendChild(subContainer);
         }
 
         return accordionItem;
@@ -1011,12 +1020,16 @@
           if (index < existingStates.length) {
             const state = existingStates[index];
             const mainAnswer = accordionItem.querySelector(".accordion-answer");
+            const subContainer = accordionItem.querySelector(
+              ".sub-questions-container"
+            );
             const subAnswers = accordionItem.querySelectorAll(
               ".sub-accordion-answer"
             );
 
             if (state.isOpen) {
               mainAnswer.style.display = "block";
+              if (subContainer) subContainer.classList.remove("hidden");
               accordionItem.querySelector(".toggle-icon").textContent = "-";
             }
 
@@ -1033,14 +1046,25 @@
       }
 
       function toggleAnswer(element) {
-        const answer = element.nextElementSibling;
+        const accordionItem =
+          element.closest(".accordion-item") ||
+          element.closest(".sub-accordion-item");
+        const answer =
+          accordionItem.querySelector(".accordion-answer") ||
+          accordionItem.querySelector(".sub-accordion-answer");
         const icon = element.querySelector(".toggle-icon");
+        const subContainer = accordionItem.querySelector(
+          ".sub-questions-container"
+        );
+
         if (answer.style.display === "block") {
           answer.style.display = "none";
           icon.textContent = "+";
+          if (subContainer) subContainer.classList.add("hidden");
         } else {
           answer.style.display = "block";
           icon.textContent = "-";
+          if (subContainer) subContainer.classList.remove("hidden");
         }
       }
 
@@ -1052,10 +1076,24 @@
         const isShowingAll = btn.textContent === "Hide All";
 
         allQuestions.forEach((question) => {
-          const answer = question.nextElementSibling;
+          const accordionItem =
+            question.closest(".accordion-item") ||
+            question.closest(".sub-accordion-item");
+          const answer =
+            accordionItem.querySelector(".accordion-answer") ||
+            accordionItem.querySelector(".sub-accordion-answer");
           const icon = question.querySelector(".toggle-icon");
+          const subContainer = accordionItem.querySelector(
+            ".sub-questions-container"
+          );
+
           answer.style.display = isShowingAll ? "none" : "block";
           icon.textContent = isShowingAll ? "+" : "-";
+          if (subContainer) {
+            isShowingAll
+              ? subContainer.classList.add("hidden")
+              : subContainer.classList.remove("hidden");
+          }
         });
 
         btn.textContent = isShowingAll ? "Show All" : "Hide All";
@@ -1066,10 +1104,18 @@
         populateAccordion();
         if (visibleItems >= accordionData.length) {
           document.querySelector(".show-more-btn").classList.add("hidden");
+          document.querySelector(".show-less-btn").classList.remove("hidden");
         }
       }
 
-      // Initial population of FAQ
+      function showLess() {
+        visibleItems = 5;
+        populateAccordion();
+        document.querySelector(".show-more-btn").classList.remove("hidden");
+        document.querySelector(".show-less-btn").classList.add("hidden");
+      }
+
+      // Initial population of accordion
       populateAccordion();
     </script>
   </body>
