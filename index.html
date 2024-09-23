@@ -301,13 +301,18 @@
         margin: 0;
       }
 
+      /* Border Radius Utilities */
       .rounded {
         border-radius: 0.25rem; /* 4px */
       }
+
+      /* Display Utilities */
       .block {
         display: block;
       }
-
+      .hidden {
+        display: none;
+      }
       /* Flexbox Container */
       .flex {
         display: flex;
@@ -485,6 +490,10 @@
       .border-b-1 {
         border-bottom-width: 1px;
       }
+      /* Image Utilities */
+      .object-cover {
+        object-fit: cover;
+      }
 
       /* Child Styles */
       .child-b b {
@@ -494,6 +503,8 @@
         font-weight: 700;
         font-size: 1.26rem;
       }
+
+      /* Button Styles */
       .btn {
         background-color: #d97a24;
         border: 1px solid #d97a24;
@@ -515,14 +526,18 @@
         color: #d97a24;
         cursor: pointer;
       }
+
+      /* Cursor Utilities */
       .cursor-pointer {
         cursor: pointer;
       }
-      .object-cover {
-        object-fit: cover;
-      }
+
+      /* Position Utilities */
       .absolute {
         position: absolute;
+      }
+      .relative {
+        position: relative;
       }
       .t-0 {
         top: 0;
@@ -530,15 +545,11 @@
       .l-0 {
         left: 0;
       }
-      .relative {
-        position: relative;
-      }
-      /* Additional styles for the layout */
 
+      /* Accordion Styles */
       .accordion-container {
         margin-top: 20px;
       }
-
       .accordion-question,
       .sub-accordion-question {
         background-color: #f1f1f1;
@@ -558,11 +569,8 @@
       .toggle-icon {
         font-size: 18px;
       }
-      .hidden {
-        display: none;
-      }
-      /* Carousel Component CSS */
 
+      /* Carousel Component CSS */
       .carousel-container {
         max-width: 100%;
         overflow: hidden;
@@ -594,7 +602,6 @@
           flex: 0 0 calc(100% - 20px); /* 1 full item visible on mobile */
         }
       }
-
       .carousel-item a {
         text-decoration: none;
         color: inherit;
@@ -605,7 +612,6 @@
         object-fit: cover;
         cursor: pointer;
       }
-
       .carousel-item-footer {
         display: flex;
         justify-content: space-between;
@@ -635,10 +641,13 @@
         cursor: pointer;
         padding: 0 10px;
       }
+
+      /* Social Share Styles */
       .social-share {
         position: relative;
         cursor: pointer;
       }
+
       /* Popover Styles */
       .popover {
         display: none;
