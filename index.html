@@ -121,6 +121,9 @@
       .text-charcoal-gray {
         color: #57585a;
       }
+      .text-light-gray {
+        color: #999;
+      }
       .text-gh-blue {
         color: #075697;
       }
@@ -131,6 +134,11 @@
         text-decoration-line: none;
       }
       /* Font Families */
+      .font-hc {
+        font-family: "Helvetica-Condensed", ui-sans-serif, system-ui, sans-serif,
+          "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+          "Noto Color Emoji";
+      }
       .font-hcb {
         font-family: "Helvetica-Condensed-Bold", ui-sans-serif, system-ui,
           sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
@@ -153,6 +161,9 @@
       /* Backgrounds */
       .bg-none {
         background-color: transparent;
+      }
+      .bg-black-half {
+        background: rgba(0, 0, 0, 0.5);
       }
       .bg-cloud-full {
         background-image: url(https://ghsitefinitytesting.blob.core.windows.net/atg-cms-work/images/default-source/landing-pages/fei-page/cloud-background_2x.jpg);
@@ -182,6 +193,9 @@
       .py-2 {
         padding-top: 0.5rem; /* 8px */
         padding-bottom: 0.5rem; /* 8px */
+      }
+      .p-5 {
+        padding: 1.25rem; /* 20px */
       }
       .p-6 {
         padding: 1.5rem; /* 24px */
@@ -247,6 +261,9 @@
       }
       .rounded {
         border-radius: 0.25rem; /* 4px */
+      }
+      .block {
+        display: block;
       }
       /* Flexbox Utilities */
       .flex {
@@ -350,6 +367,9 @@
         margin-left: auto;
         margin-right: auto;
       }
+      .m-0 {
+        margin: 0;
+      }
       .m-b-2-25 {
         margin-bottom: 0.5625rem; /* 9px */
       }
@@ -361,6 +381,9 @@
       }
       .gap-1-5 {
         gap: 0.375rem; /* 6px */
+      }
+      .gap-2 {
+        gap: 0.5rem; /* 8px */
       }
       .gap-3 {
         gap: 0.75rem; /* 12px */
@@ -442,6 +465,21 @@
       .cursor-pointer {
         cursor: pointer;
       }
+      .object-cover {
+        object-fit: cover;
+      }
+      .absolute {
+        position: absolute;
+      }
+      .t-0 {
+        top: 0;
+      }
+      .l-0 {
+        left: 0;
+      }
+      .relative {
+        position: relative;
+      }
       /* Additional styles for the layout */
       .flex-2 {
         flex-grow: 2;
@@ -482,47 +520,104 @@
         display: none;
       }
       /* Carousel Component CSS */
+
+      .card-shadow {
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+      }
+      .card-shadow:hover {
+        box-shadow: 0 0 10px 0 rgba(115, 162, 195, 0.7);
+      }
+      .h-56-25 {
+        height: 14.0625rem; /* 225px */
+      }
+
       .carousel-container {
         max-width: 100%;
         overflow: hidden;
-        padding: 20px;
+        padding: 10px 10%; /* Space for partial visibility of 1st and 5th cards */
+        position: relative;
       }
       .carousel {
         display: flex;
         transition: transform 0.3s ease;
+        padding: 0 10px; /* Adds margin between first and last cards */
       }
       .carousel-item {
-        flex: 0 0 calc(100% - 40px);
+        flex: 0 0 calc(33.33% - 20px); /* 3 full items visible */
         margin-right: 20px;
         background-color: white;
-        border-radius: 8px;
         overflow: hidden;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      @media (max-width: 1024px) {
+        .carousel-item {
+          flex: 0 0 calc(50% - 20px); /* 2 full items visible on tablets */
+        }
+      }
+      @media (max-width: 768px) {
+        .carousel-item {
+          flex: 0 0 calc(100% - 20px); /* 1 full item visible on mobile */
+        }
+      }
+
+      .carousel-item a {
+        text-decoration: none;
+        color: inherit;
       }
       .carousel-item img {
         width: 100%;
-        height: 200px;
+        height: 225px;
         object-fit: cover;
+        cursor: pointer;
       }
-      .carousel-item-content {
-        padding: 15px;
-      }
-      .carousel-item h2 {
-        font-size: 18px;
-        margin: 0 0 10px 0;
-        color: #333;
-      }
-      .carousel-item p {
-        font-size: 14px;
-        color: #666;
-        margin: 0 0 10px 0;
-      }
+
       .carousel-item-footer {
         display: flex;
         justify-content: space-between;
         align-items: center;
         font-size: 12px;
         color: #999;
+      }
+      .carousel-item-footer .categories span {
+        cursor: pointer;
+        color: #0073e6;
+        margin-right: 5px;
+      }
+      .carousel-item-footer .categories span:hover {
+        text-decoration: underline;
+      }
+      .carousel-item-footer .date {
+        color: #666;
+      }
+      .social-share {
+        position: relative;
+        cursor: pointer;
+      }
+      /* Popover Styles */
+      .popover {
+        display: none;
+        position: absolute;
+        bottom: 30px;
+        right: 0;
+        background-color: white;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        border-radius: 4px;
+        width: 150px;
+        z-index: 1000;
+      }
+      .popover a {
+        display: block;
+        margin-bottom: 5px;
+        text-decoration: none;
+        color: #0073e6;
+        font-size: 14px;
+      }
+      .popover a:hover {
+        text-decoration: underline;
       }
       .carousel-nav {
         text-align: center;
@@ -534,16 +629,6 @@
         font-size: 24px;
         cursor: pointer;
         padding: 0 10px;
-      }
-      @media (min-width: 768px) {
-        .carousel-item {
-          flex: 0 0 calc(50% - 30px);
-        }
-      }
-      @media (min-width: 1024px) {
-        .carousel-item {
-          flex: 0 0 calc(298px - 30px);
-        }
       }
     </style>
   </head>
@@ -890,7 +975,7 @@
         </h2>
         <div class="carousel-container">
           <div class="carousel">
-            <!-- 10 carousel items will be dynamically inserted here -->
+            <!-- Carousel items will be dynamically inserted here -->
           </div>
         </div>
         <div class="carousel-nav">
@@ -1211,124 +1296,271 @@
           title: "Podcast: Understanding Fan Energy Index (FEI)",
           content:
             "Fan Energy Index (FEI) is a metric that can assist engineers in selecting the most energy efficient fans for many different applications.",
-          category: "Codes/Standards, Fan Energy Index",
+          category: ["Codes/Standards", "Fan Energy Index"],
           author: "Tyler Manci, P.E.",
           date: "November 3, 2023",
+          url: "https://example.com/podcast-understanding-fei",
         },
         {
           title:
             "What you need to know about ASHRAE 90.1-2022, FEG, and FEI - Part II",
           content:
-            "The second in this two-part blog series explains the Fan Energy Index (FEI) metric and the benefits it offers when selecting fans that optimize performance and reduce energy consumption.",
-          category: "Codes/Standards, Fan Energy Index",
+            "The second in this two-part blog series explains the Fan Energy Index (FEI) metric and the benefits it offers when selecting fans.",
+          category: ["Codes/Standards", "Fan Energy Index"],
           author: "Tyler Manci, P.E.",
           date: "October 27, 2023",
-        },
-        {
-          title: "Understanding FEI",
-          content:
-            "Energy efficiency factors, including those for fans, play a crucial role in optimizing performance and reducing energy consumption.",
-          category: "Codes/Standards, Fan Energy Index",
-          author: "Tyler Manci, P.E.",
-          date: "October 13, 2023",
+          url: "https://example.com/ashrae-fei-part2",
         },
         {
           title: "Podcast: Understanding Fan Energy Index (FEI)",
           content:
             "Fan Energy Index (FEI) is a metric that can assist engineers in selecting the most energy efficient fans for many different applications.",
-          category: "Codes/Standards, Fan Energy Index",
+          category: ["Codes/Standards", "Fan Energy Index"],
           author: "Tyler Manci, P.E.",
           date: "November 3, 2023",
+          url: "https://example.com/podcast-understanding-fei",
         },
         {
           title:
             "What you need to know about ASHRAE 90.1-2022, FEG, and FEI - Part II",
           content:
-            "The second in this two-part blog series explains the Fan Energy Index (FEI) metric and the benefits it offers when selecting fans that optimize performance and reduce energy consumption.",
-          category: "Codes/Standards, Fan Energy Index",
+            "The second in this two-part blog series explains the Fan Energy Index (FEI) metric and the benefits it offers when selecting fans.",
+          category: ["Codes/Standards", "Fan Energy Index"],
           author: "Tyler Manci, P.E.",
           date: "October 27, 2023",
-        },
-        {
-          title: "Understanding FEI",
-          content:
-            "Energy efficiency factors, including those for fans, play a crucial role in optimizing performance and reducing energy consumption.",
-          category: "Codes/Standards, Fan Energy Index",
-          author: "Tyler Manci, P.E.",
-          date: "October 13, 2023",
+          url: "https://example.com/ashrae-fei-part2",
         },
         {
           title: "Podcast: Understanding Fan Energy Index (FEI)",
           content:
             "Fan Energy Index (FEI) is a metric that can assist engineers in selecting the most energy efficient fans for many different applications.",
-          category: "Codes/Standards, Fan Energy Index",
+          category: ["Codes/Standards", "Fan Energy Index"],
           author: "Tyler Manci, P.E.",
           date: "November 3, 2023",
+          url: "https://example.com/podcast-understanding-fei",
         },
         {
           title:
             "What you need to know about ASHRAE 90.1-2022, FEG, and FEI - Part II",
           content:
-            "The second in this two-part blog series explains the Fan Energy Index (FEI) metric and the benefits it offers when selecting fans that optimize performance and reduce energy consumption.",
-          category: "Codes/Standards, Fan Energy Index",
+            "The second in this two-part blog series explains the Fan Energy Index (FEI) metric and the benefits it offers when selecting fans.",
+          category: ["Codes/Standards", "Fan Energy Index"],
           author: "Tyler Manci, P.E.",
           date: "October 27, 2023",
-        },
-        {
-          title: "Understanding FEI",
-          content:
-            "Energy efficiency factors, including those for fans, play a crucial role in optimizing performance and reducing energy consumption.",
-          category: "Codes/Standards, Fan Energy Index",
-          author: "Tyler Manci, P.E.",
-          date: "October 13, 2023",
+          url: "https://example.com/ashrae-fei-part2",
         },
         {
           title: "Podcast: Understanding Fan Energy Index (FEI)",
           content:
             "Fan Energy Index (FEI) is a metric that can assist engineers in selecting the most energy efficient fans for many different applications.",
-          category: "Codes/Standards, Fan Energy Index",
+          category: ["Codes/Standards", "Fan Energy Index"],
           author: "Tyler Manci, P.E.",
           date: "November 3, 2023",
+          url: "https://example.com/podcast-understanding-fei",
         },
         {
           title:
             "What you need to know about ASHRAE 90.1-2022, FEG, and FEI - Part II",
           content:
-            "The second in this two-part blog series explains the Fan Energy Index (FEI) metric and the benefits it offers when selecting fans that optimize performance and reduce energy consumption.",
-          category: "Codes/Standards, Fan Energy Index",
+            "The second in this two-part blog series explains the Fan Energy Index (FEI) metric and the benefits it offers when selecting fans.",
+          category: ["Codes/Standards", "Fan Energy Index"],
           author: "Tyler Manci, P.E.",
           date: "October 27, 2023",
+          url: "https://example.com/ashrae-fei-part2",
         },
         {
-          title: "Understanding FEI",
+          title: "Podcast: Understanding Fan Energy Index (FEI)",
           content:
-            "Energy efficiency factors, including those for fans, play a crucial role in optimizing performance and reducing energy consumption.",
-          category: "Codes/Standards, Fan Energy Index",
+            "Fan Energy Index (FEI) is a metric that can assist engineers in selecting the most energy efficient fans for many different applications.",
+          category: ["Codes/Standards", "Fan Energy Index"],
           author: "Tyler Manci, P.E.",
-          date: "October 13, 2023",
+          date: "November 3, 2023",
+          url: "https://example.com/podcast-understanding-fei",
         },
+        {
+          title:
+            "What you need to know about ASHRAE 90.1-2022, FEG, and FEI - Part II",
+          content:
+            "The second in this two-part blog series explains the Fan Energy Index (FEI) metric and the benefits it offers when selecting fans.",
+          category: ["Codes/Standards", "Fan Energy Index"],
+          author: "Tyler Manci, P.E.",
+          date: "October 27, 2023",
+          url: "https://example.com/ashrae-fei-part2",
+        },
+        {
+          title: "Podcast: Understanding Fan Energy Index (FEI)",
+          content:
+            "Fan Energy Index (FEI) is a metric that can assist engineers in selecting the most energy efficient fans for many different applications.",
+          category: ["Codes/Standards", "Fan Energy Index"],
+          author: "Tyler Manci, P.E.",
+          date: "November 3, 2023",
+          url: "https://example.com/podcast-understanding-fei",
+        },
+        {
+          title:
+            "What you need to know about ASHRAE 90.1-2022, FEG, and FEI - Part II",
+          content:
+            "The second in this two-part blog series explains the Fan Energy Index (FEI) metric and the benefits it offers when selecting fans.",
+          category: ["Codes/Standards", "Fan Energy Index"],
+          author: "Tyler Manci, P.E.",
+          date: "October 27, 2023",
+          url: "https://example.com/ashrae-fei-part2",
+        },
+        {
+          title: "Podcast: Understanding Fan Energy Index (FEI)",
+          content:
+            "Fan Energy Index (FEI) is a metric that can assist engineers in selecting the most energy efficient fans for many different applications.",
+          category: ["Codes/Standards", "Fan Energy Index"],
+          author: "Tyler Manci, P.E.",
+          date: "November 3, 2023",
+          url: "https://example.com/podcast-understanding-fei",
+        },
+        {
+          title:
+            "What you need to know about ASHRAE 90.1-2022, FEG, and FEI - Part II",
+          content:
+            "The second in this two-part blog series explains the Fan Energy Index (FEI) metric and the benefits it offers when selecting fans.",
+          category: ["Codes/Standards", "Fan Energy Index"],
+          author: "Tyler Manci, P.E.",
+          date: "October 27, 2023",
+          url: "https://example.com/ashrae-fei-part2",
+        },
+        {
+          title: "Podcast: Understanding Fan Energy Index (FEI)",
+          content:
+            "Fan Energy Index (FEI) is a metric that can assist engineers in selecting the most energy efficient fans for many different applications.",
+          category: ["Codes/Standards", "Fan Energy Index"],
+          author: "Tyler Manci, P.E.",
+          date: "November 3, 2023",
+          url: "https://example.com/podcast-understanding-fei",
+        },
+        {
+          title:
+            "What you need to know about ASHRAE 90.1-2022, FEG, and FEI - Part II",
+          content:
+            "The second in this two-part blog series explains the Fan Energy Index (FEI) metric and the benefits it offers when selecting fans.",
+          category: ["Codes/Standards", "Fan Energy Index"],
+          author: "Tyler Manci, P.E.",
+          date: "October 27, 2023",
+          url: "https://example.com/ashrae-fei-part2",
+        },
+        {
+          title: "Podcast: Understanding Fan Energy Index (FEI)",
+          content:
+            "Fan Energy Index (FEI) is a metric that can assist engineers in selecting the most energy efficient fans for many different applications.",
+          category: ["Codes/Standards", "Fan Energy Index"],
+          author: "Tyler Manci, P.E.",
+          date: "November 3, 2023",
+          url: "https://example.com/podcast-understanding-fei",
+        },
+        {
+          title:
+            "What you need to know about ASHRAE 90.1-2022, FEG, and FEI - Part II",
+          content:
+            "The second in this two-part blog series explains the Fan Energy Index (FEI) metric and the benefits it offers when selecting fans.",
+          category: ["Codes/Standards", "Fan Energy Index"],
+          author: "Tyler Manci, P.E.",
+          date: "October 27, 2023",
+          url: "https://example.com/ashrae-fei-part2",
+        },
+        {
+          title: "Podcast: Understanding Fan Energy Index (FEI)",
+          content:
+            "Fan Energy Index (FEI) is a metric that can assist engineers in selecting the most energy efficient fans for many different applications.",
+          category: ["Codes/Standards", "Fan Energy Index"],
+          author: "Tyler Manci, P.E.",
+          date: "November 3, 2023",
+          url: "https://example.com/podcast-understanding-fei",
+        },
+        {
+          title:
+            "What you need to know about ASHRAE 90.1-2022, FEG, and FEI - Part II",
+          content:
+            "The second in this two-part blog series explains the Fan Energy Index (FEI) metric and the benefits it offers when selecting fans.",
+          category: ["Codes/Standards", "Fan Energy Index"],
+          author: "Tyler Manci, P.E.",
+          date: "October 27, 2023",
+          url: "https://example.com/ashrae-fei-part2",
+        },
+        {
+          title: "Podcast: Understanding Fan Energy Index (FEI)",
+          content:
+            "Fan Energy Index (FEI) is a metric that can assist engineers in selecting the most energy efficient fans for many different applications.",
+          category: ["Codes/Standards", "Fan Energy Index"],
+          author: "Tyler Manci, P.E.",
+          date: "November 3, 2023",
+          url: "https://example.com/podcast-understanding-fei",
+        },
+        {
+          title:
+            "What you need to know about ASHRAE 90.1-2022, FEG, and FEI - Part II",
+          content:
+            "The second in this two-part blog series explains the Fan Energy Index (FEI) metric and the benefits it offers when selecting fans.",
+          category: ["Codes/Standards", "Fan Energy Index"],
+          author: "Tyler Manci, P.E.",
+          date: "October 27, 2023",
+          url: "https://example.com/ashrae-fei-part2",
+        },
+        // More items...
       ];
 
       const carousel = document.querySelector(".carousel");
       const prevBtn = document.getElementById("prevBtn");
       const nextBtn = document.getElementById("nextBtn");
       let currentIndex = 0;
+      let startX = 0;
+      let endX = 0;
 
       function createCarouselItems() {
         carouselData.forEach((item, index) => {
           const carouselItem = document.createElement("div");
-          carouselItem.className = "carousel-item";
+          carouselItem.className = "carousel-item card-shadow";
           carouselItem.innerHTML = `
-                    <a href="${item.href}" class="carousel-item-link">
-                      <img src="https://picsum.photos/seed/${index}/400/200" alt="${item.title}">
-                      <div class="transperent-bg"></div>
-                      <h3>${item.title}</h3>
+                    <a class="relative block h-56-25" href="${item.url}">
+                        <img class="object-cover w-full h-full" src="https://picsum.photos/seed/${index}/400/200" alt="${
+            item.title
+          }">
+                        <div class="absolute t-0 l-0 w-full h-full bg-black-half">
+                            <h2 class="font-hc font-medium text-5-5 text-white p-5">${
+                              item.title
+                            }</h2>
+                        </div>
                     </a>
-                    <div class="carousel-item-content">                        
-                        <p>${item.content}</p>
-                        <div class="carousel-item-footer">
-                            <span>${item.category}</span>
-                            <span>by ${item.author} • ${item.date}</span>
+                    <div class="flex flex-col flex-1 justify-between font-hc font-medium p-5">
+                        <p class="text-charcoal-gray text-4 m-0">${
+                          item.content
+                        }</p>
+                        <div class="flex flex-col gap-3 mt-4-5">
+                            <div class="text-gh-blue">
+                                ${item.category
+                                  .map((cat) => `<span>${cat}</span>, `)
+                                  .join("")}
+                            </div>
+                            <div class="flex flex-row justify-between items-center">
+                              <div class="flex flex-col gap-1-5">
+                                <div class="text-light-gray text-3-5">by ${
+                                  item.author
+                                }</div>
+                                <div class="text-3-5">${item.date}</div>
+                              </div>
+                              <div class="social-share" data-url="${item.url}">
+                                  <i class="fa fa-share-alt text-gh-blue text-3-5"></i>
+                                  <div class="popover">
+                                      <a href="https://twitter.com/share?url=${
+                                        item.url
+                                      }" target="_blank">Twitter</a>
+                                      <a href="https://www.facebook.com/sharer/sharer.php?u=${
+                                        item.url
+                                      }" target="_blank">Facebook</a>
+                                      <a href="mailto:?subject=Check out this article&body=${
+                                        item.url
+                                      }" target="_blank">Email</a>
+                                      <a href="https://www.linkedin.com/shareArticle?url=${
+                                        item.url
+                                      }" target="_blank">LinkedIn</a>
+                                  </div>
+                              </div>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -1337,21 +1569,70 @@
       }
 
       function showItems() {
-        const itemWidth = carousel.children[0].offsetWidth;
+        debugger;
+        const itemWidth = carousel.children[0].offsetWidth + 20; // Include margin
         carousel.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
       }
 
       prevBtn.addEventListener("click", () => {
         if (currentIndex > 0) {
           currentIndex--;
-          showItems();
+        } else {
+          currentIndex = carousel.children.length - 3; // Loop to last visible set
         }
+        showItems();
       });
 
       nextBtn.addEventListener("click", () => {
-        if (currentIndex < carousel.children.length - 1) {
+        if (currentIndex < carousel.children.length - 3) {
           currentIndex++;
-          showItems();
+        } else {
+          currentIndex = 0; // Loop back to first item
+        }
+        showItems();
+      });
+
+      // Touch event listeners for swipe functionality
+      carousel.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+      });
+
+      carousel.addEventListener("touchmove", (e) => {
+        endX = e.touches[0].clientX;
+      });
+
+      carousel.addEventListener("touchend", () => {
+        const diffX = startX - endX;
+
+        // If the swipe is significant enough
+        if (Math.abs(diffX) > 50) {
+          if (diffX > 0) {
+            // Swipe left (Next)
+            nextBtn.click();
+          } else {
+            // Swipe right (Previous)
+            prevBtn.click();
+          }
+        }
+      });
+
+      // Toggle popover visibility when social-share is clicked
+      document.addEventListener("click", (event) => {
+        const clickedElement = event.target.closest(".social-share");
+
+        // Hide all popovers first
+        document.querySelectorAll(".popover").forEach((popover) => {
+          popover.style.display = "none";
+        });
+
+        // If a social-share was clicked, toggle its popover
+        if (clickedElement) {
+          const popover = clickedElement.querySelector(".popover");
+          if (popover.style.display === "block") {
+            popover.style.display = "none";
+          } else {
+            popover.style.display = "block";
+          }
         }
       });
 
