@@ -559,10 +559,10 @@
         justify-content: space-between;
         align-items: center;
       }
-      .accordion-answer,
+      /* .accordion-answer,
       .sub-accordion-answer {
         display: none;
-      }
+      } */
       .sub-accordion-item {
         margin-left: 20px;
       }
@@ -1191,8 +1191,8 @@
 
         const answer = document.createElement("div");
         answer.className = isSubItem
-          ? "sub-accordion-answer mt-5 font-medium font-hce text-3-75 text-charcoal-gray py-2-25 px-5"
-          : "accordion-answer mt-5 font-medium font-hce text-3-75 text-charcoal-gray py-2-25 px-5";
+          ? "sub-accordion-answer mt-5 font-medium font-hce text-3-75 text-charcoal-gray py-2-25 px-5 hidden"
+          : "accordion-answer mt-5 font-medium font-hce text-3-75 text-charcoal-gray py-2-25 px-5 hidden";
         answer.textContent = item.answer;
 
         accordionItem.appendChild(question);
@@ -1214,11 +1214,12 @@
         const container = document.querySelector(".accordion-container");
         const existingItems = Array.from(container.children);
         const existingStates = existingItems.map((item) => ({
-          isOpen:
-            item.querySelector(".accordion-answer").style.display === "block",
+          isOpen: !item
+            .querySelector(".accordion-answer")
+            .classList.contains("hidden"),
           subStates: Array.from(
             item.querySelectorAll(".sub-accordion-answer")
-          ).map((sub) => sub.style.display === "block"),
+          ).map((sub) => !sub.classList.contains("hidden")),
         }));
 
         container.innerHTML = "";
@@ -1236,18 +1237,27 @@
               ".sub-accordion-answer"
             );
 
+            // Set visibility based on existing states
             if (state.isOpen) {
-              mainAnswer.style.display = "block";
-              if (subContainer) subContainer.classList.remove("hidden");
+              mainAnswer.classList.remove("hidden");
               accordionItem.querySelector(".toggle-icon").textContent = "-";
+              if (subContainer) subContainer.classList.remove("hidden");
+            } else {
+              mainAnswer.classList.add("hidden");
+              accordionItem.querySelector(".toggle-icon").textContent = "+";
             }
 
             subAnswers.forEach((subAnswer, subIndex) => {
               if (state.subStates[subIndex]) {
-                subAnswer.style.display = "block";
+                subAnswer.classList.remove("hidden");
                 subAnswer.previousElementSibling.querySelector(
                   ".toggle-icon"
                 ).textContent = "-";
+              } else {
+                subAnswer.classList.add("hidden");
+                subAnswer.previousElementSibling.querySelector(
+                  ".toggle-icon"
+                ).textContent = "+";
               }
             });
           }
@@ -1272,45 +1282,60 @@
           ".sub-questions-container"
         );
 
-        if (answer.style.display === "block") {
-          answer.style.display = "none";
-          icon.textContent = "+";
-          if (subContainer) subContainer.classList.add("hidden");
+        // Toggle visibility using classes
+        const isVisible = !answer.classList.contains("hidden");
+        if (isVisible) {
+          answer.classList.add("hidden"); // Hide the answer
+          icon.textContent = "+"; // Update icon
+          if (subContainer) subContainer.classList.add("hidden"); // Hide sub-container if it exists
         } else {
-          answer.style.display = "block";
-          icon.textContent = "-";
-          if (subContainer) subContainer.classList.remove("hidden");
+          answer.classList.remove("hidden"); // Show the answer
+          icon.textContent = "-"; // Update icon
+          if (subContainer) subContainer.classList.remove("hidden"); // Show sub-container if it exists
         }
       }
 
       function toggleAll() {
         const allQuestions = document.querySelectorAll(
-          ".question-accordion-container, .sub-question-accordion-container"
+          ".question-accordion-container"
         );
         const btn = document.querySelector(".show-all-btn");
         const isShowingAll = btn.textContent === "Hide All";
 
         allQuestions.forEach((question) => {
-          const accordionItem =
-            question.closest(".accordion-item") ||
-            question.closest(".sub-accordion-item");
-          const answer =
-            accordionItem.querySelector(".accordion-answer") ||
-            accordionItem.querySelector(".sub-accordion-answer");
+          const accordionItem = question.closest(".accordion-item");
+          const answer = accordionItem.querySelector(".accordion-answer");
           const icon = question.querySelector(".toggle-icon");
           const subContainer = accordionItem.querySelector(
             ".sub-questions-container"
           );
 
-          answer.style.display = isShowingAll ? "none" : "block";
-          icon.textContent = isShowingAll ? "+" : "-";
-          if (subContainer) {
-            isShowingAll
-              ? subContainer.classList.add("hidden")
-              : subContainer.classList.remove("hidden");
+          // Toggle visibility for main answer
+          if (isShowingAll) {
+            answer.classList.add("hidden"); // Hide main answer
+            icon.textContent = "+";
+            if (subContainer) subContainer.classList.add("hidden"); // Hide sub-container if it exists
+          } else {
+            answer.classList.remove("hidden"); // Show main answer
+            icon.textContent = "-";
+            if (subContainer) {
+              subContainer.classList.remove("hidden"); // Show sub-container if it exists
+
+              // Ensure all sub-answers are also shown
+              const subAnswers = subContainer.querySelectorAll(
+                ".sub-accordion-answer"
+              );
+              subAnswers.forEach((subAnswer) => {
+                subAnswer.classList.remove("hidden");
+                subAnswer.previousElementSibling.querySelector(
+                  ".toggle-icon"
+                ).textContent = "-"; // Update sub-question icons
+              });
+            }
           }
         });
 
+        // Update button text
         btn.textContent = isShowingAll ? "Show All" : "Hide All";
       }
 
@@ -1610,7 +1635,6 @@
       }
 
       function showItems() {
-        debugger;
         const itemWidth = carousel.children[0].offsetWidth + 20; // Include margin
         carousel.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
       }
