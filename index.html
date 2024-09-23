@@ -770,12 +770,14 @@
           </div>
           <div class="flex gap-6 flex-col justify-center grow basis-0 shrink">
             <p class="font-medium font-hce text-3-75 text-charcoal-gray">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-              consequat tempus rhoncus. Vestibulum sed mi in metus ullamcorper
-              aliquet sit amet sit amet diam. Etiam consequat tempus rhoncus.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              The FEI metric is a powerful engineering tool for fan selection.
+              Read our application guide to learn how it is calculated, what it
+              says about fan speed and sound, and how to use it during submittal
+              review.
             </p>
-            <button class="btn">DOWNLOAD THE GUIDE</button>
+            <div>
+              <button class="btn">DOWNLOAD THE GUIDE</button>
+            </div>
           </div>
         </div>
       </div>
@@ -1314,22 +1316,45 @@
           if (isShowingAll) {
             answer.classList.add("hidden"); // Hide main answer
             icon.textContent = "+";
-            if (subContainer) subContainer.classList.add("hidden"); // Hide sub-container if it exists
-          } else {
-            answer.classList.remove("hidden"); // Show main answer
-            icon.textContent = "-";
-            if (subContainer) {
-              subContainer.classList.remove("hidden"); // Show sub-container if it exists
 
-              // Ensure all sub-answers are also shown
+            if (subContainer) {
+              subContainer.classList.add("hidden"); // Hide sub-container if it exists
+
+              // Hide all sub-answers and update icons
               const subAnswers = subContainer.querySelectorAll(
                 ".sub-accordion-answer"
               );
               subAnswers.forEach((subAnswer) => {
-                subAnswer.classList.remove("hidden");
-                subAnswer.previousElementSibling.querySelector(
-                  ".toggle-icon"
-                ).textContent = "-"; // Update sub-question icons
+                subAnswer.classList.add("hidden"); // Hide each sub-answer
+                const subIcon =
+                  subAnswer.previousElementSibling.querySelector(
+                    ".toggle-icon"
+                  );
+                if (subIcon) {
+                  subIcon.textContent = "+"; // Update sub-question icons
+                }
+              });
+            }
+          } else {
+            answer.classList.remove("hidden"); // Show main answer
+            icon.textContent = "-";
+
+            if (subContainer) {
+              subContainer.classList.remove("hidden"); // Show sub-container if it exists
+
+              // Show all sub-answers and update icons
+              const subAnswers = subContainer.querySelectorAll(
+                ".sub-accordion-answer"
+              );
+              subAnswers.forEach((subAnswer) => {
+                subAnswer.classList.remove("hidden"); // Show each sub-answer
+                const subIcon =
+                  subAnswer.previousElementSibling.querySelector(
+                    ".toggle-icon"
+                  );
+                if (subIcon) {
+                  subIcon.textContent = "-"; // Update sub-question icons
+                }
               });
             }
           }
