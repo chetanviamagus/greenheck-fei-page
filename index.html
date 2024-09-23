@@ -169,6 +169,9 @@
       .bg-none {
         background-color: transparent;
       }
+      .bg-gh-orange {
+        background-color: #d97a23;
+      }
       .bg-black-half {
         background: rgba(0, 0, 0, 0.5);
       }
@@ -243,6 +246,9 @@
       }
 
       /* Padding (All sides) */
+      .p-2-5 {
+        padding: 0.625rem; /* 10px */
+      }
       .p-5 {
         padding: 1.25rem; /* 20px */
       }
@@ -363,8 +369,14 @@
       .w-full {
         width: 100%;
       }
+      .w-3-25 {
+        width: 0.8125rem; /* 13px */
+      }
       .w-14 {
         width: 3.5rem; /* 56px */
+      }
+      .w-37-5 {
+        width: 9.375rem; /* 150px */
       }
       .w-87 {
         width: 21.75rem; /* 348px */
@@ -539,11 +551,34 @@
       .relative {
         position: relative;
       }
-      .t-0 {
+      .z-9999 {
+        z-index: 9999;
+      }
+      .top-0 {
         top: 0;
       }
-      .l-0 {
+      .right-0 {
+        right: 0;
+      }
+      .bottom-5 {
+        bottom: 1.25rem; /* 20px */
+      }
+      .bottom-7-5 {
+        bottom: 1.875rem; /* 30px */
+      }
+      .left-0 {
         left: 0;
+      }
+      .btn img {
+        /* Default image styling */
+        filter: none;
+        transition: filter 0.3s ease;
+      }
+
+      .btn:hover img {
+        /* Apply orange color on hover */
+        filter: brightness(0) saturate(100%) invert(53%) sepia(85%)
+          saturate(873%) hue-rotate(347deg) brightness(90%) contrast(88%);
       }
 
       /* Accordion Styles */
@@ -650,17 +685,9 @@
 
       /* Popover Styles */
       .popover {
-        display: none;
-        position: absolute;
-        bottom: 30px;
-        right: 0;
-        background-color: white;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        padding: 10px;
-        border-radius: 4px;
-        width: 150px;
-        z-index: 1000;
+        border: 1px solid rgba(0, 0, 0, 0.2);
       }
+
       .popover a {
         display: block;
         margin-bottom: 5px;
@@ -670,27 +697,57 @@
       }
       .popover a:hover {
         text-decoration: underline;
+        color: #d97a23;
+      }
+      .fa-share-alt:hover {
+        text-decoration: none;
+        color: #d97a23;
+      }
+      @media (max-width: 1024px) {
+        .t-text-6-5 {
+          font-size: 1.5rem; /*26px*/
+        }
+        .t-text-3-25 {
+          font-size: 0.8125rem; /*13px*/
+        }
+        .t-flex-col {
+          flex-direction: column;
+        }
+        .t-flex-row {
+          flex-direction: row;
+        }
+        .t-max-w-184 {
+          max-width: 46rem; /*736px*/
+        }
+        .t-max-w-full {
+          max-width: 100%;
+        }
+        .child-b b {
+          font-size: 0.8125rem; /*13px*/
+        }
       }
     </style>
   </head>
   <body>
     <div class="py-17-5 bg-cloud-full">
       <h1
-        class="font-bold font-hcb text-12 text-center text-charcoal-gray uppercase"
+        class="font-bold font-hcb text-12 t-text-6-5 text-center text-charcoal-gray uppercase"
       >
         Understanding Fan Energy Index (FEI)
       </h1>
-      <p class="font-medium font-hce text-3-75 text-center text-charcoal-gray">
+      <p
+        class="font-medium font-hce text-3-75 t-text-3-25 text-center text-charcoal-gray"
+      >
         FEI is a true “wire-to-air” metric that rates the overall energy
         consumption of a complete fan system.
       </p>
-      <div class="flex flex-row max-w-262 m-auto">
+      <div class="flex flex-row t-flex-col max-w-262 t-max-w-184 m-auto">
         <div
-          class="mt-7-5 flex items-center justify-center max-w-151-75 max-h-93-75 w-full h-93-75 bg-white box-shadow"
+          class="mt-7-5 flex items-center justify-center max-w-151-75 t-max-w-full max-h-93-75 w-full h-93-75 bg-white box-shadow"
         >
           Video
         </div>
-        <div class="mt-7-5 flex justify-center gap-7-5 flex-col">
+        <div class="mt-7-5 flex justify-center gap-7-5 flex-col t-flex-row">
           <div class="flex flex-row items-start gap-5 pl-5 max-w-108-75">
             <!--mt-7-5-->
             <img
@@ -699,7 +756,7 @@
               alt="Metric"
             />
             <p
-              class="child-b font-medium font-hce text-4-5 text-charcoal-gray leading-6"
+              class="child-b font-medium font-hce text-4-5 t-text-3-25 text-charcoal-gray leading-6"
             >
               FEI is a <b>ratio</b> that allows you to accurately compare energy
               consumption between similar fan systems.
@@ -713,7 +770,7 @@
               alt="tool"
             />
             <p
-              class="child-b font-medium font-hce text-4-5 text-charcoal-gray leading-6"
+              class="child-b font-medium font-hce text-4-5 t-text-3-25 text-charcoal-gray leading-6"
             >
               FEI is a <b>tool</b> that helps you select the best fan system for
               your application.
@@ -727,7 +784,7 @@
               alt="mandate"
             />
             <p
-              class="child-b font-medium font-hce text-4-5 text-charcoal-gray leading-6"
+              class="child-b font-medium font-hce text-4-5 t-text-3-25 text-charcoal-gray leading-6"
             >
               FEI is a <b>mandate:</b> minimum FEI values are mandated by codes.
             </p>
@@ -929,7 +986,14 @@
               optimizing fan energy performance using FEI at a convenient
               location for you.
             </p>
-            <button class="btn mt-4">FIND MY REP</button>
+            <button class="btn mt-4">
+              <img
+                class="w-3-25"
+                src="https://ghsitefinitytesting.blob.core.windows.net/atg-cms-work/images/default-source/landing-pages/fei-page/icon-rep.svg"
+                alt="Find My Rep"
+              />
+              FIND MY REP
+            </button>
           </div>
           <div class="flex flex-col items-start max-w-131-75">
             <h3
@@ -1016,6 +1080,8 @@
         >
           Related Blog Posts
         </h2>
+      </div>
+      <div class="w-full">
         <div class="carousel-container">
           <div class="carousel">
             <!-- Carousel items will be dynamically inserted here -->
@@ -1024,6 +1090,30 @@
         <div class="carousel-nav">
           <button id="prevBtn">←</button>
           <button id="nextBtn">→</button>
+        </div>
+      </div>
+    </div>
+    <div class="py-17-5 bg-white">
+      <div class="max-w-328 m-auto">
+        <div class="flex flex-col items-center">
+          <h3
+            class="font-bold text-charcoal-gray font-hcb text-5-5 leading-6-5 pb-1-5"
+          >
+            Need Help?
+          </h3>
+          <p class="font-medium font-hce text-3-75 text-charcoal-gray mt-5">
+            Talk to the experts. Greenheck reps are ready to answer your
+            questions and provide help to find the fan solution that fits your
+            project.
+          </p>
+          <button class="btn mt-4">
+            <img
+              class="w-3-25"
+              src="https://ghsitefinitytesting.blob.core.windows.net/atg-cms-work/images/default-source/landing-pages/fei-page/icon-rep.svg"
+              alt="Find My Rep"
+            />
+            FIND MY REP
+          </button>
         </div>
       </div>
     </div>
@@ -1611,7 +1701,7 @@
                         <img class="object-cover w-full h-full" src="https://picsum.photos/seed/${index}/400/200" alt="${
             item.title
           }">
-                        <div class="absolute t-0 l-0 w-full h-full bg-black-half">
+                        <div class="absolute top-0 left-0 w-full h-full bg-black-half">
                             <h2 class="font-hc font-medium text-5-5 text-white p-5">${
                               item.title
                             }</h2>
@@ -1636,7 +1726,7 @@
                               </div>
                               <div class="social-share" data-url="${item.url}">
                                   <i class="fa fa-share-alt text-gh-blue text-3-5"></i>
-                                  <div class="popover">
+                                  <div class="popover hidden absolute right-0 bottom-5 bg-white card-shadow p-2-5 w-37-5 z-9999">
                                       <a href="https://twitter.com/share?url=${
                                         item.url
                                       }" target="_blank">Twitter</a>
@@ -1712,16 +1802,16 @@
 
         // Hide all popovers first
         document.querySelectorAll(".popover").forEach((popover) => {
-          popover.style.display = "none";
+          popover.classList.add("hidden"); // Add 'hidden' class to hide
         });
 
         // If a social-share was clicked, toggle its popover
         if (clickedElement) {
           const popover = clickedElement.querySelector(".popover");
-          if (popover.style.display === "block") {
-            popover.style.display = "none";
+          if (popover.classList.contains("hidden")) {
+            popover.classList.remove("hidden"); // Remove 'hidden' class to show
           } else {
-            popover.style.display = "block";
+            popover.classList.add("hidden"); // Add 'hidden' class to hide
           }
         }
       });
