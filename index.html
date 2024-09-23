@@ -76,13 +76,9 @@
         src: url(https://www.greenheck.com/Content/GreenheckStyles/fonts/Helvetica-Narrow-Oblique.otf);
       }
 
-      /* Typography Utilities */
       /* Text Utilities */
       .text-3-5 {
         font-size: 0.875rem; /* 14px */
-      }
-      .text-12 {
-        font-size: 3rem; /* 48px */
       }
       .text-3-75 {
         font-size: 0.9375rem; /* 15px */
@@ -99,10 +95,14 @@
       .text-6 {
         font-size: 1.5rem; /* 24px */
       }
-
       .text-9 {
         font-size: 2.25rem; /* 36px */
       }
+      .text-12 {
+        font-size: 3rem; /* 48px */
+      }
+
+      /* Line Height Utilities */
       .leading-5-25 {
         line-height: 1.3125rem; /* 21px */
       }
@@ -112,12 +112,16 @@
       .leading-6-5 {
         line-height: 1.625rem; /* 26px */
       }
+
+      /* Font Weight Utilities */
       .font-bold {
         font-weight: 700;
       }
       .font-medium {
         font-weight: 500;
       }
+
+      /* Text Color Utilities */
       .text-charcoal-gray {
         color: #57585a;
       }
@@ -130,9 +134,12 @@
       .text-white {
         color: #fff;
       }
+
+      /* Text Decoration */
       .no-underline {
         text-decoration-line: none;
       }
+
       /* Font Families */
       .font-hc {
         font-family: "Helvetica-Condensed", ui-sans-serif, system-ui, sans-serif,
@@ -182,30 +189,45 @@
       }
 
       /* Spacing Utilities */
-      .py-4-5 {
-        padding-top: 1.125rem; /* 18px */
-        padding-bottom: 1.125rem; /* 18px */
+      /* Padding Left */
+      .pl-5 {
+        padding-left: 1.25rem; /* 20px */
       }
-      .px-4-5 {
-        padding-left: 1.125rem; /* 18px */
-        padding-right: 1.125rem; /* 18px */
+
+      /* Padding Bottom */
+      .pb-1-5 {
+        padding-bottom: 0.375rem; /* 6px */
       }
+      .pb-2-5 {
+        padding-bottom: 0.625rem; /* 10px */
+      }
+
+      /* Padding Top-Bottom */
       .py-2 {
         padding-top: 0.5rem; /* 8px */
         padding-bottom: 0.5rem; /* 8px */
       }
-      .p-5 {
-        padding: 1.25rem; /* 20px */
+      .py-2-25 {
+        padding-top: 0.5625rem; /* 9px */
+        padding-bottom: 0.5625rem; /* 9px */
       }
-      .p-6 {
-        padding: 1.5rem; /* 24px */
+      .py-4-5 {
+        padding-top: 1.125rem; /* 18px */
+        padding-bottom: 1.125rem; /* 18px */
       }
-      .pb-1-5 {
-        padding-bottom: 0.375rem; /* 6px */
+      .py-5 {
+        padding-top: 1.25rem; /* 20px */
+        padding-bottom: 1.25rem; /* 20px */
+      }
+      .py-17-5 {
+        padding-top: 4.375rem; /* 70px */
+        padding-bottom: 4.375rem; /* 70px */
       }
 
-      .pb-2-5 {
-        padding-bottom: 0.625rem; /* 10px */
+      /* Padding Left-Right */
+      .px-4-5 {
+        padding-left: 1.125rem; /* 18px */
+        padding-right: 1.125rem; /* 18px */
       }
       .px-5 {
         padding-left: 1.25rem; /* 20px */
@@ -215,22 +237,19 @@
         padding-left: 1.5rem; /* 24px */
         padding-right: 1.5rem; /* 24px */
       }
-      .py-2-25 {
-        padding-top: 0.5625rem; /* 9px */
-        padding-bottom: 0.5625rem; /* 9px */
-      }
-      .py-5 {
-        padding-top: 1.25rem; /* 20px */
-        padding-bottom: 1.25rem; /* 20px */
-      }
       .px-7-5 {
         padding-left: 1.875rem; /* 30px */
         padding-right: 1.875rem; /* 30px */
       }
-      .py-17-5 {
-        padding-top: 4.375rem; /* 70px */
-        padding-bottom: 4.375rem; /* 70px */
+
+      /* Padding (All sides) */
+      .p-5 {
+        padding: 1.25rem; /* 20px */
       }
+      .p-6 {
+        padding: 1.5rem; /* 24px */
+      }
+      /* Margin Top */
       .mt-2-5 {
         margin-top: 0.625rem; /* 10px */
       }
@@ -240,7 +259,6 @@
       .mt-4-5 {
         margin-top: 1.125rem; /* 18px */
       }
-
       .mt-5 {
         margin-top: 1.25rem; /* 20px */
       }
@@ -250,6 +268,11 @@
       .mt-10 {
         margin-top: 2.5rem; /* 40px */
       }
+      .mt-m-1-25 {
+        margin-top: -0.3125rem; /* -5px */
+      }
+
+      /* Margin Bottom */
       .mb-1-5 {
         margin-bottom: 0.375rem; /* 6px */
       }
@@ -259,13 +282,33 @@
       .mb-10 {
         margin-bottom: 2.5rem; /* 40px */
       }
+      .mb-2-25 {
+        margin-bottom: 0.5625rem; /* 9px */
+      }
+      .mb-5 {
+        margin-bottom: 1.25rem; /* 20px */
+      }
+
+      /* General Margin */
+      .m-auto {
+        margin: auto;
+      }
+      .mx-auto {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .m-0 {
+        margin: 0;
+      }
+
       .rounded {
         border-radius: 0.25rem; /* 4px */
       }
       .block {
         display: block;
       }
-      /* Flexbox Utilities */
+
+      /* Flexbox Container */
       .flex {
         display: flex;
       }
@@ -275,8 +318,31 @@
       .flex-col {
         flex-direction: column;
       }
+
+      /* Flex Item Properties */
+      .flex-1 {
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 0%;
+      }
+      .flex-2 {
+        flex-grow: 2;
+        flex-shrink: 1;
+        flex-basis: 0%;
+      }
+      .grow {
+        flex-grow: 1;
+      }
+      .shrink {
+        flex-shrink: 1;
+      }
+      .basis-0 {
+        flex-basis: 0px;
+      }
+
+      /* Alignment Utilities */
       .items-start {
-        align-items: start;
+        align-items: flex-start; /* Updated for clarity */
       }
       .items-center {
         align-items: center;
@@ -287,22 +353,36 @@
       .justify-between {
         justify-content: space-between;
       }
-      .grow {
-        flex-grow: 1;
-      }
-      .basis-0 {
-        flex-basis: 0px;
-      }
-      .shrink {
-        flex-shrink: 1;
-      }
-      /* Size Utilities */
 
+      /* Width Utilities */
+      .w-full {
+        width: 100%;
+      }
+      .w-14 {
+        width: 3.5rem; /* 56px */
+      }
+      .w-87 {
+        width: 21.75rem; /* 348px */
+      }
+
+      /* Max Width Utilities */
+      .max-w-full {
+        max-width: 100%;
+      }
       .max-w-7-5 {
         max-width: 1.875rem; /* 30px */
       }
+      .max-w-31-5 {
+        max-width: 7.875rem; /* 126px */
+      }
       .max-w-64 {
-        max-width: 16rem; /* 256px  */
+        max-width: 16rem; /* 256px */
+      }
+      .max-w-87 {
+        max-width: 21.75rem; /* 348px */
+      }
+      .max-w-98-75 {
+        max-width: 24.6875rem; /* 395px */
       }
       .max-w-108-75 {
         max-width: 27.1875rem; /* 435px */
@@ -317,37 +397,15 @@
         max-width: 51.25rem; /* 820px */
       }
       .max-w-262 {
-        max-width: 65rem;
+        max-width: 65rem; /* 1040px */
       }
       .max-w-328 {
         max-width: 82rem; /* 1312px */
       }
-      .w-full {
-        width: 100%;
-      }
-      .w-14 {
-        width: 3.5rem; /* 56px */
-      }
-      .max-w-31-5 {
-        max-width: 7.875rem; /* 126px */
-      }
-      .max-w-87 {
-        max-width: 21.75rem; /* 348px */
-      }
-      .max-w-full {
-        max-width: 100%;
-      }
-      .w-87 {
-        width: 21.75rem; /* 348px */
-      }
-      .max-w-98-75 {
-        max-width: 24.6875rem; /* 395px */
-      }
+
+      /* Height Utilities */
       .h-full {
         height: 100%;
-      }
-      .max-h-93-75 {
-        max-height: 23.4375rem; /* 375px */
       }
       .h-14 {
         height: 3.5rem; /* 56px */
@@ -355,30 +413,19 @@
       .h-17-5 {
         height: 4.375rem; /* 70px */
       }
+      .h-56-25 {
+        height: 14.0625rem; /* 225px */
+      }
       .h-93-75 {
         height: 23.4375rem; /* 375px */
       }
 
-      /* Alignment and Gaps */
-      .m-auto {
-        margin: auto;
+      /* Max Height Utilities */
+      .max-h-93-75 {
+        max-height: 23.4375rem; /* 375px */
       }
-      .mx-auto {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .m-0 {
-        margin: 0;
-      }
-      .m-b-2-25 {
-        margin-bottom: 0.5625rem; /* 9px */
-      }
-      .m-b-5 {
-        margin-bottom: 1.25rem; /* 20px */
-      }
-      .m-t-m-1-25 {
-        margin-top: -0.3125rem; /* -5px */
-      }
+
+      /* Gaps */
       .gap-1-5 {
         gap: 0.375rem; /* 6px */
       }
@@ -403,24 +450,32 @@
       .gap-9 {
         gap: 2.25rem; /* 36px */
       }
-      .pl-5 {
-        padding-left: 1.25rem; /* 20px */
-      }
 
       /* Box Shadow */
       .box-shadow {
         box-shadow: 0 0 10px rgba(208, 231, 242, 1);
       }
-      /* Border */
+      .card-shadow {
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+      }
+      .card-shadow:hover {
+        box-shadow: 0 0 10px 0 rgba(115, 162, 195, 0.7);
+      }
+
+      /* Border Styles */
       .border-solid {
         border-style: solid;
       }
+
+      /* Border Colors */
       .border-gh-blue {
         border-color: #075697;
       }
       .border-charcoal-gray {
         border-color: #57585a;
       }
+
+      /* Border Widths */
       .border-0 {
         border-width: 0;
       }
@@ -430,9 +485,7 @@
       .border-b-1 {
         border-bottom-width: 1px;
       }
-      .text-center {
-        text-align: center;
-      }
+
       /* Child Styles */
       .child-b b {
         font-family: "Helvetica-Condensed-Bold", ui-sans-serif, system-ui,
@@ -481,17 +534,6 @@
         position: relative;
       }
       /* Additional styles for the layout */
-      .flex-2 {
-        flex-grow: 2;
-        flex-shrink: 1;
-        flex-basis: 0%;
-      }
-
-      .flex-1 {
-        flex-grow: 1;
-        flex-shrink: 1;
-        flex-basis: 0%;
-      }
 
       .accordion-container {
         margin-top: 20px;
@@ -520,16 +562,6 @@
         display: none;
       }
       /* Carousel Component CSS */
-
-      .card-shadow {
-        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-      }
-      .card-shadow:hover {
-        box-shadow: 0 0 10px 0 rgba(115, 162, 195, 0.7);
-      }
-      .h-56-25 {
-        height: 14.0625rem; /* 225px */
-      }
 
       .carousel-container {
         max-width: 100%;
@@ -592,6 +624,17 @@
       .carousel-item-footer .date {
         color: #666;
       }
+      .carousel-nav {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .carousel-nav button {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
       .social-share {
         position: relative;
         cursor: pointer;
@@ -618,17 +661,6 @@
       }
       .popover a:hover {
         text-decoration: underline;
-      }
-      .carousel-nav {
-        text-align: center;
-        margin-top: 20px;
-      }
-      .carousel-nav button {
-        background: none;
-        border: none;
-        font-size: 24px;
-        cursor: pointer;
-        padding: 0 10px;
       }
     </style>
   </head>
@@ -697,7 +729,7 @@
     <div class="py-17-5 bg-soft-silver">
       <div class="max-w-328 m-auto">
         <h2
-          class="font-bold font-hcb text-12 text-charcoal-gray uppercase m-b-5"
+          class="font-bold font-hcb text-12 text-charcoal-gray uppercase mb-5"
         >
           What is FEI?
         </h2>
@@ -711,7 +743,7 @@
             <div class="flex flex-col justify-center gap-3">
               <div class="flex flex-row items-center gap-1-5 text-gh-blue">
                 <div class="font-hcb text-9">FEI</div>
-                <div class="font-hce text-6 m-t-m-1-25">=</div>
+                <div class="font-hce text-6 mt-m-1-25">=</div>
                 <div class="flex flex-col font-hcb text-5-5">
                   <div class="border-solid border-gh-blue border-0 border-b-1">
                     Baseline Electrical Input Power
@@ -742,14 +774,14 @@
     <div class="py-17-5 bg-white">
       <div class="max-w-328 m-auto">
         <h1
-          class="font-bold font-hcb text-12 text-charcoal-gray uppercase m-b-2-25"
+          class="font-bold font-hcb text-12 text-charcoal-gray uppercase mb-2-25"
         >
           BEYOND COMPLIANCE: APPLYING FEI IN FAN SYSTEM SELECTION
         </h1>
 
         <main class="flex gap-9">
           <section class="flex-2">
-            <p class="font-medium font-hce text-3-75 text-charcoal-gray m-b-5">
+            <p class="font-medium font-hce text-3-75 text-charcoal-gray mb-5">
               Select a fan type based on the application, duty point, and space
               constraints. Once you have determined the best fan type, use FEI
               to optimize the energy consumption.
@@ -917,7 +949,7 @@
     <div class="py-17-5 bg-white">
       <div class="max-w-328 m-auto">
         <h2
-          class="font-bold font-hcb text-12 text-charcoal-gray uppercase m-b-2-25"
+          class="font-bold font-hcb text-12 text-charcoal-gray uppercase mb-2-25"
         >
           Additional Resources
         </h2>
@@ -969,7 +1001,7 @@
     <div class="py-17-5 bg-soft-silver">
       <div class="max-w-328 m-auto">
         <h2
-          class="font-bold font-hcb text-12 text-charcoal-gray uppercase m-b-2-25"
+          class="font-bold font-hcb text-12 text-charcoal-gray uppercase mb-2-25"
         >
           Related Blog Posts
         </h2>
