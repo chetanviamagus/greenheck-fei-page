@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Responsive Touch-Enabled Carousel with Partially Hidden Edge Cards
+    </title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .carousel-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+      }
+      .carousel {
+        display: flex;
+        transition: transform 0.5s ease;
+      }
+      .carousel-item {
+        flex: 0 0 25%;
+        padding: 20px;
+        box-sizing: border-box;
+        text-align: center;
+        border: 1px solid #000;
+        background-color: yellow;
+      }
+      .carousel-item img {
+        max-width: 100%;
+        height: auto;
+      }
+      .carousel-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 10;
+      }
+      .carousel-button.prev {
+        left: 10px;
+      }
+      .carousel-button.next {
+        right: 10px;
+      }
+      @media (max-width: 768px) {
+        .carousel-item {
+          flex: 0 0 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="carousel-container">
+      <div class="carousel"></div>
+      <button class="carousel-button prev">&lt;</button>
+      <button class="carousel-button next">&gt;</button>
+    </div>
+
+    <script>
+      // JSON data
+      const carouselData = [
+        { image: "/api/placeholder/300/200", title: "Item 1" },
+        { image: "/api/placeholder/300/200", title: "Item 2" },
+        { image: "/api/placeholder/300/200", title: "Item 3" },
+        { image: "/api/placeholder/300/200", title: "Item 4" },
+        { image: "/api/placeholder/300/200", title: "Item 5" },
+        { image: "/api/placeholder/300/200", title: "Item 6" },
+        { image: "/api/placeholder/300/200", title: "Item 7" },
+        { image: "/api/placeholder/300/200", title: "Item 8" },
+        { image: "/api/placeholder/300/200", title: "Item 9" },
+        { image: "/api/placeholder/300/200", title: "Item 10" },
+        { image: "/api/placeholder/300/200", title: "Item 11" },
+        { image: "/api/placeholder/300/200", title: "Item 12" },
+      ];
+
+      const carousel = document.querySelector(".carousel");
+      const prevBtn = document.querySelector(".carousel-button.prev");
+      const nextBtn = document.querySelector(".carousel-button.next");
+
+      // Configuration
+      const config = {
+        itemsPerView: 4,
+        infiniteLoop: true,
+        transitionSpeed: 500,
+        autoplay: false,
+        autoplayInterval: 3000,
+      };
+
+      let currentIndex = 0;
+      const totalItems = carouselData.length;
+
+      // Populate carousel with JSON data
+      function populateCarousel() {
+        carouselData.forEach((item) => {
+          const div = document.createElement("div");
+          div.className = "carousel-item";
+          div.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}">
+                    <h3>${item.title}</h3>
+                `;
+          carousel.appendChild(div);
+        });
+      }
+
+      function updateCarousel() {
+        const itemWidth = 100 / config.itemsPerView;
+        const items = document.querySelectorAll(".carousel-item");
+        items.forEach((item, index) => {
+          item.style.flex = `0 0 ${itemWidth}%`;
+        });
+
+        let offset = currentIndex * itemWidth;
+
+        // Add 50% of item width to offset when not at the start
+        if (currentIndex > 0) {
+          offset += itemWidth / 2;
+        }
+
+        carousel.style.transform = `translateX(-${offset}%)`;
+      }
+
+      function moveCarousel(direction) {
+        if (direction === "next") {
+          if (currentIndex < totalItems - config.itemsPerView) {
+            currentIndex++;
+          } else if (config.infiniteLoop) {
+            currentIndex = 0;
+          }
+        } else {
+          if (currentIndex > 0) {
+            currentIndex--;
+          } else if (config.infiniteLoop) {
+            currentIndex = totalItems - config.itemsPerView;
+          }
+        }
+        updateCarousel();
+      }
+
+      nextBtn.addEventListener("click", () => moveCarousel("next"));
+      prevBtn.addEventListener("click", () => moveCarousel("prev"));
+
+      // Touch support
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      carousel.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      });
+
+      carousel.addEventListener("touchend", (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 50) {
+          moveCarousel("next");
+        } else if (touchEndX - touchStartX > 50) {
+          moveCarousel("prev");
+        }
+      });
+
+      // Responsive handling
+      function handleResize() {
+        const width = window.innerWidth;
+        if (width <= 768) {
+          config.itemsPerView = 1;
+        } else {
+          config.itemsPerView = 4;
+        }
+        updateCarousel();
+      }
+
+      window.addEventListener("resize", handleResize);
+
+      // Initialize
+      populateCarousel();
+      handleResize();
+      updateCarousel();
+
+      // Autoplay
+      if (config.autoplay) {
+        setInterval(() => moveCarousel("next"), config.autoplayInterval);
+      }
+    </script>
+  </body>
+</html>
