@@ -10,14 +10,15 @@
     <style>
       /* Global Styles */
       * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+        line-height: 1.3 !important;
       }
 
       /* Base HTML Settings */
       html {
-        font-size: 16px; /* Base font size in pixels */
+        font-size: 16px !important; /* Base font size in pixels */
       }
       .h1,
       .h2,
@@ -34,8 +35,11 @@
       h6,
       h7,
       p {
-        margin: 0;
-        padding: 0;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      p {
+        line-height: 1.4 !important;
       }
       /* Font Face Definitions */
       @font-face {
@@ -120,95 +124,98 @@
       }
 
       /* Line Height Utilities */
-      .leading-5-25 {
-        line-height: 1.3125rem !important; /* 21px */
-      }
+      /* 21px */
+      /* leading-5-25 {
+        line-height: 1.3125rem !important;
+      } */
+      /* 24px */
       .leading-6 {
-        line-height: 1.5rem !important; /* 24px */
+        line-height: 1.5rem !important;
       }
-      .leading-6-5 {
-        line-height: 1.625rem !important; /* 26px */
-      }
+      /* 26px */
+      /* . {
+        line-height: 1.625rem !important;
+      } */
 
       /* Font Weight Utilities */
       .font-bold {
-        font-weight: 700;
+        font-weight: 700 !important;
       }
       .font-medium {
-        font-weight: 500;
+        font-weight: 500 !important;
       }
 
       /* Text Color Utilities */
       .text-charcoal-gray {
-        color: #57585a;
+        color: #57585a !important;
       }
       .text-light-gray {
-        color: #999;
+        color: #999 !important;
       }
       .text-gh-blue {
-        color: #075697;
+        color: #075697 !important;
       }
       .text-white {
-        color: #fff;
+        color: #fff !important;
       }
       .text-gh-orange {
-        color: #d97a24;
+        color: #d97a24 !important;
       }
 
       /* Text Decoration */
       .no-underline {
-        text-decoration-line: none;
+        text-decoration-line: none !important;
       }
 
       /* Font Families */
       .font-hc {
         font-family: "Helvetica-Condensed", ui-sans-serif, system-ui, sans-serif,
           "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-          "Noto Color Emoji";
+          "Noto Color Emoji" !important;
       }
       .font-hcb {
         font-family: "Helvetica-Condensed-Bold", ui-sans-serif, system-ui,
           sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-          "Noto Color Emoji";
+          "Noto Color Emoji" !important;
       }
       .font-hce {
         font-family: "HelveticaCE", ui-sans-serif, system-ui, sans-serif,
           "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-          "Noto Color Emoji";
+          "Noto Color Emoji" !important;
       }
 
       /* Text Transformations */
       .uppercase {
-        text-transform: uppercase;
+        text-transform: uppercase !important;
       }
       .text-center {
-        text-align: center;
+        text-align: center !important;
       }
 
       /* Backgrounds */
       .bg-none {
-        background-color: transparent;
+        background-color: transparent !important;
       }
       .bg-gh-orange {
-        background-color: #d97a24;
+        background-color: #d97a24 !important;
       }
       .bg-black-half {
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.5) !important;
       }
       .bg-cloud-full {
-        background-image: url(https://ghsitefinitytesting.blob.core.windows.net/atg-cms-work/images/default-source/landing-pages/fei-page/cloud-background_2x.jpg);
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
+        background-image: url(https://ghsitefinitytesting.blob.core.windows.net/atg-cms-work/images/default-source/landing-pages/fei-page/cloud-background_2x.jpg) !important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
       }
       .bg-white {
-        background-color: #fff; /* White background color */
+        background-color: #fff !important; /* White background color */
       }
       .bg-gh-blue {
-        background-color: #075697; /* Blue background color */
+        background-color: #075697 !important; /* Blue background color */
       }
       .bg-soft-silver {
-        background-color: #f6f6f6;
+        background-color: #f6f6f6 !important;
       }
 
       /* Spacing Utilities */
@@ -321,14 +328,14 @@
 
       /* General Margin */
       .m-auto {
-        margin: auto;
+        margin: auto !important;
       }
       .mx-auto {
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: auto !important;
+        margin-right: auto !important;
       }
       .m-0 {
-        margin: 0;
+        margin: 0 !important;
       }
 
       /* Border Radius Utilities */
@@ -338,60 +345,60 @@
 
       /* Display Utilities */
       .block {
-        display: block;
+        display: block !important;
       }
       .hidden {
-        display: none;
+        display: none !important;
       }
       /* Flexbox Container */
       .flex {
-        display: flex;
+        display: flex !important;
       }
       .flex-row {
-        flex-direction: row;
+        flex-direction: row !important;
       }
       .flex-col {
-        flex-direction: column;
+        flex-direction: column !important;
       }
 
       /* Flex Item Properties */
       .flex-1 {
-        flex-grow: 1;
-        flex-shrink: 1;
-        flex-basis: 0%;
+        flex-grow: 1 !important;
+        flex-shrink: 1 !important;
+        flex-basis: 0% !important;
       }
       .flex-2 {
-        flex-grow: 2;
-        flex-shrink: 1;
-        flex-basis: 0%;
+        flex-grow: 2 !important;
+        flex-shrink: 1 !important;
+        flex-basis: 0% !important;
       }
       .grow {
-        flex-grow: 1;
+        flex-grow: 1 !important;
       }
       .shrink {
-        flex-shrink: 1;
+        flex-shrink: 1 !important;
       }
       .basis-0 {
-        flex-basis: 0px;
+        flex-basis: 0px !important;
       }
 
       /* Alignment Utilities */
       .items-start {
-        align-items: flex-start; /* Updated for clarity */
+        align-items: flex-start !important; /* Updated for clarity */
       }
       .items-center {
-        align-items: center;
+        align-items: center !important;
       }
       .justify-center {
-        justify-content: center;
+        justify-content: center !important;
       }
       .justify-between {
-        justify-content: space-between;
+        justify-content: space-between !important;
       }
 
       /* Width Utilities */
       .w-full {
-        width: 100%;
+        width: 100% !important;
       }
       .w-3-25 {
         width: 0.8125rem !important; /* 13px */
@@ -408,7 +415,7 @@
 
       /* Max Width Utilities */
       .max-w-full {
-        max-width: 100%;
+        max-width: 100% !important;
       }
       .max-w-7-5 {
         max-width: 1.875rem !important; /* 30px */
@@ -449,7 +456,7 @@
 
       /* Height Utilities */
       .h-full {
-        height: 100%;
+        height: 100% !important;
       }
       .h-14 {
         height: 3.5rem !important; /* 56px */
@@ -497,96 +504,96 @@
 
       /* Box Shadow */
       .box-shadow {
-        box-shadow: 0 0 10px rgba(208, 231, 242, 1);
+        box-shadow: 0 0 10px rgba(208, 231, 242, 1) !important;
       }
       .card-shadow {
-        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1) !important;
       }
       .card-shadow:hover {
-        box-shadow: 0 0 10px 0 rgba(115, 162, 195, 0.7);
+        box-shadow: 0 0 10px 0 rgba(115, 162, 195, 0.7) !important;
       }
 
       /* Border Styles */
       .border-solid {
-        border-style: solid;
+        border-style: solid !important;
       }
 
       /* Border Colors */
       .border-gh-blue {
-        border-color: #075697;
+        border-color: #075697 !important;
       }
       .border-charcoal-gray {
-        border-color: #57585a;
+        border-color: #57585a !important;
       }
 
       /* Border Widths */
       .border-0 {
-        border-width: 0;
+        border-width: 0 !important;
       }
       .border-1 {
-        border-width: 1px;
+        border-width: 1px !important;
       }
       .border-b-1 {
-        border-bottom-width: 1px;
+        border-bottom-width: 1px !important;
       }
       /* Image Utilities */
       .object-cover {
-        object-fit: cover;
+        object-fit: cover !important;
       }
 
       /* Child Styles */
       .child-b b {
         font-family: "Helvetica-Condensed-Bold", ui-sans-serif, system-ui,
           sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-          "Noto Color Emoji";
-        font-weight: 700;
+          "Noto Color Emoji" !important;
+        font-weight: 700 !important;
       }
       .show-more-btn:hover {
-        color: #075697;
+        color: #075697 !important;
       }
       /* Button Styles */
       .btn {
-        background-color: #d97a24;
-        border: 1px solid #d97a24;
-        color: white;
-        width: auto;
-        display: inline-block;
-        padding: 0.5rem 2rem;
-        font-size: 1rem;
-        border-radius: 8px;
-        font-weight: bold;
+        background-color: #d97a24 !important;
+        border: 1px solid #d97a24 !important;
+        color: white !important;
+        width: auto !important;
+        display: inline-block !important;
+        padding: 0.5rem 2rem !important;
+        font-size: 1rem !important;
+        border-radius: 8px !important;
+        font-weight: bold !important;
         font-family: "Helvetica-Condensed-Bold", ui-sans-serif, system-ui,
           sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-          "Noto Color Emoji";
+          "Noto Color Emoji" !important;
         transition: all 0.5s ease !important;
       }
       .btn:hover {
-        background-color: white;
-        border: 1px solid #d97a24;
-        color: #d97a24;
-        cursor: pointer;
+        background-color: white !important;
+        border: 1px solid #d97a24 !important;
+        color: #d97a24 !important;
+        cursor: pointer !important;
       }
 
       /* Cursor Utilities */
       .cursor-pointer {
-        cursor: pointer;
+        cursor: pointer !important;
       }
 
       /* Position Utilities */
       .absolute {
-        position: absolute;
+        position: absolute !important;
       }
       .relative {
-        position: relative;
+        position: relative !important;
       }
       .z-9999 {
-        z-index: 9999;
+        z-index: 9999 !important;
       }
       .top-0 {
-        top: 0;
+        top: 0 !important;
       }
       .right-0 {
-        right: 0;
+        right: 0 !important;
       }
       .bottom-5 {
         bottom: 1.25rem !important; /* 20px */
@@ -595,150 +602,150 @@
         bottom: 1.875rem !important; /* 30px */
       }
       .left-0 {
-        left: 0;
+        left: 0 !important;
       }
       .btn img {
         /* Default image styling */
-        filter: none;
+        filter: none !important;
         transition: filter 0.3s ease !important;
       }
 
       .btn:hover img {
         /* Apply orange color on hover */
         filter: brightness(0) saturate(100%) invert(53%) sepia(85%)
-          saturate(873%) hue-rotate(347deg) brightness(90%) contrast(88%);
+          saturate(873%) hue-rotate(347deg) brightness(90%) contrast(88%) !important;
       }
 
       /* Accordion Styles */
       .accordion-container {
-        margin-top: 20px;
+        margin-top: 20px !important;
       }
       .accordion-question,
       .sub-accordion-question {
-        background-color: #f1f1f1;
-        padding: 10px;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        background-color: #f1f1f1 !important;
+        padding: 10px !important;
+        cursor: pointer !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
       }
       /* .accordion-answer,
       .sub-accordion-answer {
-        display: none;
+        display: none !important;
       } */
       .sub-accordion-item {
-        margin-left: 20px;
+        margin-left: 20px !important;
       }
       .toggle-icon {
-        font-size: 18px;
-        height: 14px;
-        line-height: 8px;
+        font-size: 18px !important;
+        height: 14px !important;
+        line-height: 8px !important;
       }
 
       /* Carousel Component CSS */
       .carousel-container {
-        max-width: 100%;
-        overflow: hidden;
-        position: relative;
+        max-width: 100% !important;
+        overflow: hidden !important;
+        position: relative !important;
       }
 
       .carousel {
-        display: flex;
+        display: flex !important;
         transition: transform 0.5s ease !important;
       }
 
       .carousel-item {
-        flex: 0 0 25%; /* 4 full items visible on desktop */
-        overflow: hidden;
-        padding: 10px;
-        /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        flex: 0 0 25% !important; /* 4 full items visible on desktop */
+        overflow: hidden !important;
+        padding: 10px !important;
+        /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important; */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
         transition: transform 0.3s ease !important;
       }
       /* Tablet breakpoint */
       @media (max-width: 1024px) {
         .carousel-item {
-          flex: 0 0 calc(50%); /* 2 full items visible on tablets */
+          flex: 0 0 calc(50%) !important; /* 2 full items visible on tablets */
         }
       }
 
       /* Mobile breakpoint */
       @media (max-width: 767px) {
         .carousel-item {
-          flex: 0 0 calc(100%); /* 1 full item visible on mobile */
+          flex: 0 0 calc(100%) !important; /* 1 full item visible on mobile */
         }
       }
 
       .carousel-item a {
-        text-decoration: none;
-        color: inherit;
+        text-decoration: none !important;
+        color: inherit !important;
       }
       .carousel-item img {
-        width: 100%;
-        height: 225px;
-        object-fit: cover;
-        cursor: pointer;
+        width: 100% !important;
+        height: 225px !important;
+        object-fit: cover !important;
+        cursor: pointer !important;
       }
       .carousel-item-footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 12px;
-        color: #999;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        font-size: 12px !important;
+        color: #999 !important;
       }
       .carousel-item-footer .categories span {
-        cursor: pointer;
-        color: #0073e6;
-        margin-right: 5px;
+        cursor: pointer !important;
+        color: #0073e6 !important;
+        margin-right: 5px !important;
       }
       .carousel-item-footer .categories span:hover {
-        text-decoration: underline;
+        text-decoration: underline !important;
       }
       .carousel-item-footer .date {
-        color: #666;
+        color: #666 !important;
       }
       .carousel-nav {
-        text-align: center;
-        margin-top: 20px;
+        text-align: center !important;
+        margin-top: 20px !important;
       }
       .carousel-nav button:hover {
-        color: #d97a24;
+        color: #d97a24 !important;
       }
       .carousel-nav button {
-        background: none;
-        border: none;
-        font-size: 24px;
-        cursor: pointer;
-        padding: 0 10px;
+        background: none !important;
+        border: none !important;
+        font-size: 24px !important;
+        cursor: pointer !important;
+        padding: 0 10px !important;
       }
 
       /* Social Share Styles */
       .social-share {
-        position: relative;
-        cursor: pointer;
+        position: relative !important;
+        cursor: pointer !important;
       }
 
       /* Popover Styles */
       .popover {
-        border: 1px solid rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(0, 0, 0, 0.2) !important;
       }
 
       .popover a {
-        display: block;
-        margin-bottom: 5px;
-        text-decoration: none;
-        color: #0073e6;
-        font-size: 14px;
+        display: block !important;
+        margin-bottom: 5px !important;
+        text-decoration: none !important;
+        color: #0073e6 !important;
+        font-size: 14px !important;
       }
       .popover a:hover {
-        text-decoration: underline;
-        color: #d97a24;
+        text-decoration: underline !important;
+        color: #d97a24 !important;
       }
       .fa-share-alt:hover {
-        text-decoration: none;
-        color: #d97a24;
+        text-decoration: none !important;
+        color: #d97a24 !important;
       }
       @media (max-width: 1024px) {
         .t-text-3-25 {
@@ -751,7 +758,7 @@
           font-size: 1rem !important; /*16px*/
         }
         .t-text-6-5 {
-          font-size: 1.5rem !important; /*26px*/
+          font-size: 1.625rem !important; /*26px*/
         }
         .t-text-8 {
           font-size: 2rem !important; /*32px*/
@@ -770,16 +777,16 @@
           max-width: 46rem !important; /*736px*/
         }
         .t-max-w-full {
-          max-width: 100%;
+          max-width: 100% !important;
         }
         .t-w-full {
-          width: 100%;
+          width: 100% !important;
         }
         .child-b b {
           font-size: 0.8125rem !important; /*13px*/
         }
         .t-gap-0 {
-          gap: 0;
+          gap: 0 !important;
         }
         .t-gap-1-5 {
           gap: 0.375rem !important; /*6px*/
@@ -788,11 +795,15 @@
           gap: 1.25rem !important; /*20px*/
         }
         .t-pl-0 {
-          padding: 0;
+          padding: 0 !important;
         }
         .t-py-0 {
-          padding-top: 0;
-          padding-bottom: 0;
+          padding-top: 0 !important;
+          padding-bottom: 0 !important;
+        }
+        .t-px-5 {
+          padding-left: 1.25rem !important; /*20px*/
+          padding-right: 1.25rem !important; /*20px*/
         }
         .t-py-12-5 {
           padding-top: 3.125rem !important; /*50px*/
@@ -801,19 +812,20 @@
         .t-pb-1-5 {
           padding-bottom: 0.375rem !important; /*6px*/
         }
-        .t-leading-4-5 {
-          line-height: 1.125rem !important; /*18px*/
-        }
+        /*18px*/
+        /* .t-leading-4-5 {
+          line-height: 1.125rem !important;
+        } */
         .t-flex-1 {
-          flex-grow: 1;
-          flex-shrink: 1;
-          flex-basis: 0%;
+          flex-grow: 1 !important;
+          flex-shrink: 1 !important;
+          flex-basis: 0% !important;
         }
         .t-mt-5 {
           margin-top: 1.25rem !important; /*20px*/
         }
         .t-text-left {
-          text-align: left;
+          text-align: left !important;
         }
       }
       @media (max-width: 767px) {
@@ -824,16 +836,34 @@
           padding-left: 1.25rem !important; /*20px*/
           padding-right: 1.25rem !important; /*20px*/
         }
+        .m-mt-0 {
+          margin-top: 0 !important; /*0px*/
+        }
+        .m-mb-1-5 {
+          margin-bottom: 0.375rem !important; /*6px*/
+        }
         .m-max-w-full {
-          max-width: 100%;
+          max-width: 100% !important;
+        }
+        .m-w-full {
+          width: 100% !important;
+        }
+        .m-text-3-25 {
+          font-size: 0.8125rem !important; /* 13px */
+        }
+        .m-text-4 {
+          font-size: 1rem !important; /* 16px */
+        }
+        .carousel-item {
+          padding: 10px 0 !important;
         }
       }
     </style>
   </head>
   <body>
-    <div class="py-17-5 t-py-12-5 m-px-5 bg-cloud-full">
+    <div class="py-17-5 t-py-12-5 m-px-5 t-px-5 bg-cloud-full">
       <h1
-        class="font-bold font-hcb text-12 t-text-6-5 text-center text-charcoal-gray uppercase"
+        class="font-bold font-hcb text-12 t-text-6-5 text-center text-charcoal-gray uppercase m-mb-1-5"
       >
         Understanding Fan Energy Index (FEI)
       </h1>
@@ -862,7 +892,7 @@
               alt="Metric"
             />
             <p
-              class="child-b font-medium font-hce text-4-5 t-text-3-25 text-charcoal-gray leading-6 t-leading-4-5"
+              class="child-b font-medium font-hce text-4-5 t-text-3-25 text-charcoal-gray"
             >
               FEI is a <b>ratio</b> that allows you to accurately compare energy
               consumption between similar fan systems.
@@ -878,7 +908,7 @@
               alt="tool"
             />
             <p
-              class="child-b font-medium font-hce text-4-5 t-text-3-25 text-charcoal-gray leading-6 t-leading-4-5"
+              class="child-b font-medium font-hce text-4-5 t-text-3-25 text-charcoal-gray"
             >
               FEI is a <b>tool</b> that helps you select the best fan system for
               your application.
@@ -894,7 +924,7 @@
               alt="mandate"
             />
             <p
-              class="child-b font-medium font-hce text-4-5 t-text-3-25 text-charcoal-gray leading-6 t-leading-4-5"
+              class="child-b font-medium font-hce text-4-5 t-text-3-25 text-charcoal-gray"
             >
               FEI is a <b>mandate:</b> minimum FEI values are mandated by codes.
             </p>
@@ -902,7 +932,7 @@
         </div>
       </div>
     </div>
-    <div class="py-17-5 t-py-12-5 m-px-5 bg-soft-silver">
+    <div class="py-17-5 t-py-12-5 m-px-5 t-px-5 bg-soft-silver">
       <div class="max-w-328 t-max-w-184 m-auto">
         <h2
           class="font-bold font-hcb text-12 t-text-6-5 text-charcoal-gray uppercase mb-5"
@@ -955,13 +985,13 @@
         </div>
       </div>
     </div>
-    <div class="py-17-5 t-py-12-5 m-px-5 bg-white">
+    <div class="py-17-5 t-py-12-5 m-px-5 t-px-5 bg-white">
       <div class="max-w-328 t-max-w-184 m-auto">
-        <h1
+        <h2
           class="font-bold font-hcb text-12 t-text-6-5 text-charcoal-gray uppercase mb-2-25"
         >
           BEYOND COMPLIANCE: APPLYING FEI IN FAN SYSTEM SELECTION
-        </h1>
+        </h2>
 
         <main class="flex t-flex-col gap-9 items-center">
           <section class="flex-2 t-flex-1 t-w-full">
@@ -972,11 +1002,11 @@
               constraints. Once you have determined the best fan type, use FEI
               to optimize the energy consumption.
             </p>
-            <h2
-              class="font-bold font-hcb text-5-75 t-text-4 text-white bg-gh-blue px-7-5 py-5"
+            <h3
+              class="font-bold font-hcb text-5-75 t-text-4 text-white bg-gh-blue px-7-5 py-5 leading-6"
             >
               ADVANTAGES OF USING FEI IN FAN SYSTEM SELECTION:
-            </h2>
+            </h3>
 
             <div class="w-full flex gap-6 mt-10 t-mt-5">
               <img
@@ -985,13 +1015,13 @@
                 class="h-14 w-14"
               />
               <div class="text-charcoal-gray">
-                <h3
-                  class="font-bold font-hcb text-5-5 t-text-4 leading-6-5 pb-2-5 t-pb-1-5"
+                <h4
+                  class="font-bold font-hcb text-5-5 t-text-4 pb-2-5 t-pb-1-5"
                 >
                   Higher FEI values equate to lower energy consumption,
                   operating costs, and carbon emissions.
-                </h3>
-                <p class="font-medium font-hce text-3-75 p-0">
+                </h4>
+                <p class="font-medium font-hce text-3-75 m-text-3-25 p-0">
                   The only way to tell which fan system uses the least energy is
                   to look at the FEI value.
                 </p>
@@ -1005,12 +1035,12 @@
                 class="h-14 w-14"
               />
               <div class="text-charcoal-gray">
-                <h3
-                  class="font-bold font-hcb text-5-5 t-text-4 leading-6-5 pb-2-5 t-pb-1-5"
+                <h4
+                  class="font-bold font-hcb text-5-5 t-text-4 pb-2-5 t-pb-1-5"
                 >
                   Higher FEI fans have a forgiving selection point.
-                </h3>
-                <p class="font-medium font-hce text-3-75 p-0">
+                </h4>
+                <p class="m-text-3-25">
                   Selecting a fan with a higher FEI will give you a selection
                   that is more central in the fan cure, giving you more room to
                   speed the fan up if you need more air during test and balance.
@@ -1025,12 +1055,12 @@
                 class="h-14 w-14"
               />
               <div class="text-charcoal-gray">
-                <h3
-                  class="font-bold font-hcb text-5-5 t-text-4 leading-6-5 pb-2-5 t-pb-1-5"
+                <h4
+                  class="font-bold font-hcb text-5-5 t-text-4 pb-2-5 t-pb-1-5"
                 >
                   Higher FEI fans are usually quieter.
-                </h3>
-                <p class="font-medium font-hce text-3-75 p-0">
+                </h4>
+                <p class="m-text-3-25">
                   FEI may also correlate to better sound performance. As an
                   example, if comparing two sidewall fans at different sizes,
                   the larger fan operates at a slower speed where it is more
@@ -1044,17 +1074,17 @@
               <img
                 src="https://ghsitefinitytesting.blob.core.windows.net/atg-cms-work/images/default-source/landing-pages/fei-page/bar-chart-icon_2x.png"
                 alt="Higher FEI usually means you have selected a better fan for
-              your application."
+                  your application."
                 class="h-14 w-14"
               />
               <div class="text-charcoal-gray">
-                <h3
-                  class="font-bold font-hcb text-5-5 t-text-4 leading-6-5 pb-2-5 t-pb-1-5"
+                <h4
+                  class="font-bold font-hcb text-5-5 t-text-4 pb-2-5 t-pb-1-5"
                 >
                   Higher FEI usually means you have selected a better fan for
                   your application.
-                </h3>
-                <p class="font-medium font-hce text-3-75 p-0">
+                </h4>
+                <p class="m-text-3-25">
                   During submittal review, a small difference in FEI could mean
                   a significant difference between comparable fans. An FEI
                   difference can indicate that fan controls have been left out
@@ -1074,7 +1104,7 @@
                 alt="Greenheck's eCAPS® online"
                 class="h-17-5"
               />
-              <h2 class="text-5-5 t-text-4 leading-6-5 font-hcb uppercase">
+              <h2 class="text-5-5 t-text-4 font-hcb uppercase">
                 CODE-COMPLIANT FAN SELECTION: ECAPS®
               </h2>
             </div>
@@ -1085,9 +1115,7 @@
                 class="w-full t-max-w-56 m-max-w-full"
               />
               <div class="flex flex-col bg-gh-blue px-6 py-4-5 gap-4">
-                <p
-                  class="text-3-75 leading-5-25 text-white font-medium font-hce"
-                >
+                <p class="text-3-75 text-white font-medium font-hce">
                   Greenheck's eCAPS® online product selection suite includes FEI
                   ratings for hundreds of fan models, giving you a powerful
                   engineering tool to select the best fan system for your
@@ -1102,12 +1130,12 @@
         </main>
       </div>
     </div>
-    <div class="py-17-5 t-py-12-5 m-px-5 bg-soft-silver">
+    <div class="py-17-5 t-py-12-5 m-px-5 t-px-5 bg-soft-silver">
       <div class="max-w-328 t-max-w-184 m-auto">
         <div class="flex gap-7-5 justify-between m-flex-col">
           <div class="flex flex-col items-start max-w-131-75">
             <h3
-              class="font-bold text-charcoal-gray font-hcb text-5-5 leading-6-5 pb-1-5 uppercase"
+              class="font-bold text-charcoal-gray font-hcb text-5-5 pb-1-5 uppercase"
             >
               Learn In Person
             </h3>
@@ -1129,7 +1157,7 @@
           </div>
           <div class="flex flex-col items-start max-w-131-75">
             <h3
-              class="font-bold text-charcoal-gray font-hcb text-5-5 leading-6-5 pb-1-5 uppercase"
+              class="font-bold text-charcoal-gray font-hcb text-5-5 pb-1-5 uppercase"
             >
               Stay informed
             </h3>
@@ -1138,11 +1166,11 @@
             >
               Keep up to date with the current changes in the industry.
             </p>
-            <div class="flex flex-row t-flex-col gap-3 t-gap-0">
+            <div class="flex flex-row t-flex-col gap-3 t-gap-0 m-w-full">
               <input
                 type="email"
                 placeholder="Email Address"
-                class="font-medium font-hce max-w-full w-87 text-3-75 t-text-3-5 mt-4 rounded border-charcoal-gray border-1 border-solid py-2 px-4"
+                class="font-medium font-hce max-w-full w-87 m-w-full text-3-75 t-text-3-5 mt-4 rounded border-charcoal-gray border-1 border-solid py-2 px-4"
               />
               <input
                 type="text"
@@ -1155,16 +1183,14 @@
         </div>
       </div>
     </div>
-    <div class="py-17-5 t-py-12-5 m-px-5 bg-white">
+    <div class="py-17-5 t-py-12-5 m-px-5 t-px-5 bg-white">
       <div class="max-w-328 t-max-w-184 m-auto">
         <h2
           class="font-bold font-hcb text-12 t-text-6-5 text-charcoal-gray uppercase mb-2-25"
         >
           Additional Resources
         </h2>
-        <h3
-          class="font-bold font-hcb text-5-5 t-text-4 leading-6-5 pb-2-5 t-pb-1-5"
-        >
+        <h3 class="font-bold font-hcb text-5-5 t-text-4 pb-2-5 t-pb-1-5">
           Industry Links
         </h3>
         <div class="flex flex-col gap-1-5 pl-5">
@@ -1180,9 +1206,7 @@
           >
         </div>
         <div class="flex justify-between mt-7-5">
-          <h3
-            class="font-bold font-hcb text-5-5 t-text-4 leading-6-5 pb-2-5 t-pb-1-5"
-          >
+          <h3 class="font-bold font-hcb text-5-5 t-text-4 pb-2-5 t-pb-1-5">
             FAQ
           </h3>
           <button
@@ -1213,7 +1237,7 @@
         </div>
       </div>
     </div>
-    <div class="py-17-5 t-py-12-5 m-px-5 bg-soft-silver">
+    <div class="py-17-5 t-py-12-5 m-px-5 t-px-5 bg-soft-silver">
       <div class="max-w-328 t-max-w-184 m-auto">
         <h2
           class="font-bold font-hcb text-12 t-text-6-5 text-charcoal-gray uppercase mb-2-25"
@@ -1233,16 +1257,16 @@
         </div>
       </div>
     </div>
-    <div class="py-17-5 t-py-12-5 m-px-5 bg-white">
+    <div class="py-17-5 t-py-12-5 m-px-5 t-px-5 bg-white">
       <div class="max-w-328 t-max-w-184 m-auto">
         <div class="flex flex-col items-center">
           <h3
-            class="font-bold text-charcoal-gray font-hcb text-5-5 leading-6-5 pb-1-5"
+            class="font-bold text-charcoal-gray font-hcb text-5-5 m-text-4 pb-1-5"
           >
             Need Help?
           </h3>
           <p
-            class="font-medium font-hce text-3-75 t-text-3-25 text-charcoal-gray mt-5"
+            class="font-medium text-center font-hce text-3-75 t-text-3-25 text-charcoal-gray mt-5 m-mt-0"
           >
             Talk to the experts. Greenheck reps are ready to answer your
             questions and provide help to find the fan solution that fits your
@@ -1813,51 +1837,51 @@
           const carouselItem = document.createElement("div");
           carouselItem.className = "carousel-item";
           carouselItem.innerHTML = `
-      <div class="card-shadow h-full flex flex-col justify-between"><a class="relative block h-56-25" href="${
-        item.url
-      }">
-        <img class="object-cover w-full h-full" src="${item.thumbURL}" alt="${
-            item.title
+          <div class="card-shadow h-full flex flex-col justify-between"><a class="relative block h-56-25" href="${
+            item.url
           }">
-        <div class="absolute top-0 left-0 w-full h-full bg-black-half">
-          <h2 class="font-hc font-medium text-5-5 t-text-4 text-white p-5">${
-            item.title
-          }</h2>
-        </div>
-      </a>
-      <div class="flex flex-col flex-1 justify-between font-hc font-medium p-5">
-        <p class="text-charcoal-gray text-4 m-0">${item.content}</p>
-        <div class="flex flex-col gap-3 mt-4-5">
-          <div class="text-gh-blue">
-            ${item.category.map((cat) => `<span>${cat}</span>`).join(", ")}
-          </div>
-          <div class="flex flex-row justify-between items-center">
-            <div class="flex flex-col gap-1-5">
-              <div class="text-light-gray text-3-5">by ${item.author}</div>
-              <div class="text-3-5">${item.date}</div>
+            <img class="object-cover w-full h-full" src="${
+              item.thumbURL
+            }" alt="${item.title}">
+            <div class="absolute top-0 left-0 w-full h-full bg-black-half">
+              <h2 class="font-hc font-medium text-5-5 t-text-4 text-white p-5">${
+                item.title
+              }</h2>
             </div>
-            <div class="social-share" data-url="${item.url}">
-              <i class="fa fa-share-alt text-gh-blue text-3-5"></i>
-              <div class="popover hidden absolute right-0 bottom-5 bg-white card-shadow p-2-5 w-37-5 z-9999">
-                <a href="https://twitter.com/share?url=${
-                  item.url
-                }" target="_blank">Twitter</a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=${
-                  item.url
-                }" target="_blank">Facebook</a>
-                <a href="mailto:?subject=Check out this article&body=${
-                  item.url
-                }" target="_blank">Email</a>
-                <a href="https://www.linkedin.com/shareArticle?url=${
-                  item.url
-                }" target="_blank">LinkedIn</a>
+          </a>
+          <div class="flex flex-col flex-1 justify-between font-hc font-medium p-5 bg-white">
+            <p class="text-charcoal-gray text-4 m-0">${item.content}</p>
+            <div class="flex flex-col gap-3 mt-4-5">
+              <div class="text-gh-blue">
+                ${item.category.map((cat) => `<span>${cat}</span>`).join(", ")}
+              </div>
+              <div class="flex flex-row justify-between items-center">
+                <div class="flex flex-col gap-1-5">
+                  <div class="text-light-gray text-3-5">by ${item.author}</div>
+                  <div class="text-3-5">${item.date}</div>
+                </div>
+                <div class="social-share" data-url="${item.url}">
+                  <i class="fa fa-share-alt text-gh-blue text-3-5"></i>
+                  <div class="popover hidden absolute right-0 bottom-5 bg-white card-shadow p-2-5 w-37-5 z-9999">
+                    <a href="https://twitter.com/share?url=${
+                      item.url
+                    }" target="_blank">Twitter</a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=${
+                      item.url
+                    }" target="_blank">Facebook</a>
+                    <a href="mailto:?subject=Check out this article&body=${
+                      item.url
+                    }" target="_blank">Email</a>
+                    <a href="https://www.linkedin.com/shareArticle?url=${
+                      item.url
+                    }" target="_blank">LinkedIn</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      </div>
-    `;
+          </div>
+        `;
           carousel.appendChild(carouselItem);
         });
       }
@@ -1866,7 +1890,7 @@
         let itemWidth;
 
         // Adjust item width based on screen size
-        if (width <= 768) {
+        if (width <= 767) {
           config.itemsPerView = 1; // Always show 1 card on mobile
         } else if (width <= 1024) {
           config.itemsPerView = 2; // Show 2 cards on tablet
@@ -1929,12 +1953,12 @@
       // Responsive handling
       function handleResize() {
         const width = window.innerWidth;
-        if (width <= 768) {
-          config.itemsPerView = 1;
-        } else if (width > 768 && width <= 1024) {
-          config.itemsPerView = 2;
+        if (width <= 767) {
+          config.itemsPerView = 1; // Always show 1 card on mobile
+        } else if (width <= 1024) {
+          config.itemsPerView = 2; // Show 2 cards on tablet
         } else {
-          config.itemsPerView = 4;
+          config.itemsPerView = 4; // Show 4 cards on desktop
         }
         updateCarousel();
       }
