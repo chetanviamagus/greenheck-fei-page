@@ -8,14 +8,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <style>
-      /* Global Styles */
       * {
-        margin: 0 !important;
-        padding: 0 !important;
-        box-sizing: border-box !important;
         line-height: 1.3 !important;
       }
-
       /* Base HTML Settings */
       html {
         font-size: 16px !important; /* Base font size in pixels */
@@ -40,6 +35,12 @@
       }
       p {
         line-height: 1.4 !important;
+      }
+      ::-webkit-input-placeholder {
+        font-size: 0.9375rem !important;
+        font-family: "HelveticaCE", ui-sans-serif, system-ui, sans-serif,
+          "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+          "Noto Color Emoji" !important;
       }
       /* Font Face Definitions */
       @font-face {
@@ -426,6 +427,9 @@
       .max-w-51 {
         max-width: 12.75rem !important; /*204px*/
       }
+      .max-w-52 {
+        max-width: 13rem !important; /* 208px */
+      }
       .max-w-64 {
         max-width: 16rem !important; /* 256px */
       }
@@ -552,7 +556,7 @@
         color: #075697 !important;
       }
       /* Button Styles */
-      .btn {
+      .btn-fei {
         background-color: #d97a24 !important;
         border: 1px solid #d97a24 !important;
         color: white !important;
@@ -567,7 +571,7 @@
           "Noto Color Emoji" !important;
         transition: all 0.5s ease !important;
       }
-      .btn:hover {
+      .btn-fei:hover {
         background-color: white !important;
         border: 1px solid #d97a24 !important;
         color: #d97a24 !important;
@@ -604,13 +608,13 @@
       .left-0 {
         left: 0 !important;
       }
-      .btn img {
+      .btn-fei img {
         /* Default image styling */
         filter: none !important;
         transition: filter 0.3s ease !important;
       }
 
-      .btn:hover img {
+      .btn-fei:hover img {
         /* Apply orange color on hover */
         filter: brightness(0) saturate(100%) invert(53%) sepia(85%)
           saturate(873%) hue-rotate(347deg) brightness(90%) contrast(88%) !important;
@@ -979,7 +983,7 @@
               review.
             </p>
             <div>
-              <button class="btn">DOWNLOAD THE GUIDE</button>
+              <button class="btn-fei">DOWNLOAD THE GUIDE</button>
             </div>
           </div>
         </div>
@@ -1122,7 +1126,7 @@
                   application and comply with energy code requirements.
                 </p>
                 <div class="text-center t-text-left">
-                  <button class="btn">GO TO eCAPS</button>
+                  <button class="btn-fei">GO TO eCAPS</button>
                 </div>
               </div>
             </div>
@@ -1146,7 +1150,7 @@
               optimizing fan energy performance using FEI at a convenient
               location for you.
             </p>
-            <button class="btn mt-4">
+            <button class="btn-fei mt-4">
               <img
                 class="w-3-25"
                 src="https://ghsitefinitytesting.blob.core.windows.net/atg-cms-work/images/default-source/landing-pages/fei-page/icon-rep.svg"
@@ -1175,10 +1179,10 @@
               <input
                 type="text"
                 placeholder="Enter your zip/postal code"
-                class="font-medium font-hce text-3-75 t-text-3-5 w-full max-w-51 mt-4 rounded border-charcoal-gray border-1 border-solid py-2 px-4"
+                class="font-medium font-hce text-3-75 t-text-3-5 w-full max-w-52 mt-4 rounded border-charcoal-gray border-1 border-solid py-2 px-4"
               />
             </div>
-            <button class="btn mt-4">SIGN UP FOR EMAILS</button>
+            <button class="btn-fei mt-4">SIGN UP FOR EMAILS</button>
           </div>
         </div>
       </div>
@@ -1272,7 +1276,7 @@
             questions and provide help to find the fan solution that fits your
             project.
           </p>
-          <button class="btn mt-4">
+          <button class="btn-fei mt-4">
             <img
               class="w-3-25"
               src="https://ghsitefinitytesting.blob.core.windows.net/atg-cms-work/images/default-source/landing-pages/fei-page/icon-rep.svg"
@@ -1906,7 +1910,8 @@
 
         // Calculate offset and handle partial card on first move
         let offset = currentIndex * itemWidth;
-        if (currentIndex > 0 && config.itemsPerView > 1) {
+        if (config.itemsPerView > 1) {
+          console.log("Hi CHetan");
           offset += itemWidth / 2; // Partially hide first card
         }
 
