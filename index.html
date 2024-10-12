@@ -99,6 +99,9 @@
       }
 
       /* Text Utilities */
+      .text-2-75 {
+        font-size: 0.6875rem !important; /* 11px */
+      }
       .text-3-5 {
         font-size: 0.875rem !important; /* 14px */
       }
@@ -192,7 +195,12 @@
       .text-center {
         text-align: center !important;
       }
-
+      .text-left {
+        text-align: left !important;
+      }
+      .text-right {
+        text-align: right !important;
+      }
       /* Backgrounds */
       .bg-none {
         background-color: transparent !important;
@@ -540,6 +548,9 @@
       .border-b-1 {
         border-bottom-width: 1px !important;
       }
+      .border-t-1 {
+        border-top-width: 1px !important;
+      }
       /* Image Utilities */
       .object-cover {
         object-fit: cover !important;
@@ -668,6 +679,57 @@
         justify-content: space-between !important;
         transition: transform 0.3s ease !important;
       }
+      /* Modal window css */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 300px;
+        position: relative;
+      }
+
+      .close {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        font-size: 20px;
+      }
+
+      .modal-image {
+        width: 100%;
+        height: auto;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      input {
+        margin: 5px 0;
+        padding: 10px;
+        width: calc(100% - 22px);
+      }
+
+      button[type="submit"],
+      #closeThankYouModal {
+        margin-top: 10px;
+      }
+      /* Modal window css */
+
       /* Tablet breakpoint */
       @media (max-width: 1024px) {
         .carousel-item {
@@ -983,7 +1045,101 @@
               review.
             </p>
             <div>
-              <button class="btn-fei">DOWNLOAD THE GUIDE</button>
+              <button class="btn-fei" id="openModal">DOWNLOAD THE GUIDE</button>
+              <div
+                id="modal"
+                class="modal"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="modalTitle"
+                aria-describedby="modalDesc"
+              >
+                <div class="modal-content max-w-205 w-full p-5">
+                  <span class="close" aria-label="Close Modal">&times;</span>
+                  <img
+                    class="max-w-64 w-full m-auto"
+                    src="https://ghsitefinitytesting.blob.core.windows.net/atg-cms-work/images/default-source/landing-pages/fei-page/fei-chart_2x.png"
+                    alt="FEI chart"
+                  />
+                  <h2
+                    class="font-hcb text-5-5 t-text-3-5 text-charcoal-gray text-left"
+                  >
+                    Download the Guide
+                  </h2>
+                  <p
+                    class="font-medium font-hce text-3-75 t-text-3-25 text-charcoal-gray text-left"
+                  >
+                    To receive your complimentary, transformative guide to FEI,
+                    kindly provide the following information:.
+                  </p>
+                  <p class="font-medium font-hce text-2-75 text-charcoal-gray">
+                    All fields are required.
+                  </p>
+                  <form id="modalForm">
+                    <input
+                      class="font-medium font-hce max-w-full w-87 m-w-full text-3-75 t-text-3-5 mt-4 rounded border-charcoal-gray border-1 border-solid py-2 px-4"
+                      type="text"
+                      placeholder="Enter your first name"
+                      required
+                      aria-required="true"
+                    />
+                    <input
+                      class="font-medium font-hce max-w-full w-87 m-w-full text-3-75 t-text-3-5 mt-4 rounded border-charcoal-gray border-1 border-solid py-2 px-4"
+                      type="text"
+                      placeholder="Enter your last name"
+                      required
+                      aria-required="true"
+                    />
+                    <input
+                      class="font-medium font-hce max-w-full w-87 m-w-full text-3-75 t-text-3-5 mt-4 rounded border-charcoal-gray border-1 border-solid py-2 px-4"
+                      type="email"
+                      placeholder="Enter your email address"
+                      required
+                      aria-required="true"
+                    />
+                    <input
+                      class="font-medium font-hce max-w-full w-87 m-w-full text-3-75 t-text-3-5 mt-4 rounded border-charcoal-gray border-1 border-solid py-2 px-4"
+                      type="text"
+                      placeholder="Enter your job title"
+                      required
+                      aria-required="true"
+                    />
+                    <label
+                      class="font-medium font-hce text-2-75 text-charcoal-gray"
+                    >
+                      <input type="checkbox" required aria-required="true" />
+                      By submitting this form, you agree to receive future
+                      emails from Greenheck regarding industry news and updates.
+                    </label>
+                    <button class="btn-fei mt-4" type="submit">SUBMIT</button>
+                  </form>
+                </div>
+              </div>
+
+              <div
+                id="thankYouModal"
+                class="modal"
+                role="dialog"
+                aria-modal="true"
+              >
+                <div class="modal-content max-w-205 w-full">
+                  <h2
+                    class="font-bold font-hcb text-6 t-text-4 text-charcoal-gray"
+                  >
+                    Thank you!
+                  </h2>
+                  <p
+                    class="font-bold font-hcb text-6 t-text-4 text-charcoal-gray"
+                  >
+                    You will receive an email to download the guide.
+                  </p>
+                  <div class="flex border-t-1 border-charcoal-gray text-right">
+                    <button class="btn-fei mt-4" id="closeThankYouModal">
+                      OK
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1646,6 +1802,7 @@
 
       // Initial population of accordion
       populateAccordion();
+
       const carouselData = [
         {
           title: "Choosing the Right Air Distribution Partner for Data Centers",
@@ -1997,6 +2154,48 @@
       if (config.autoplay) {
         setInterval(() => moveCarousel("next"), config.autoplayInterval);
       }
+      // Modal window js.
+      document.addEventListener("DOMContentLoaded", () => {
+        const openModalButton = document.getElementById("openModal");
+        const modal = document.getElementById("modal");
+        const closeModalButton = document.querySelector(".close");
+        const modalForm = document.getElementById("modalForm");
+        const thankYouModal = document.getElementById("thankYouModal");
+        const closeThankYouModalButton =
+          document.getElementById("closeThankYouModal");
+
+        openModalButton.onclick = () => {
+          modal.style.display = "block";
+        };
+
+        closeModalButton.onclick = () => {
+          modal.style.display = "none";
+        };
+
+        window.onclick = (event) => {
+          if (event.target === modal) {
+            modal.style.display = "none";
+          }
+        };
+
+        modalForm.onsubmit = (event) => {
+          event.preventDefault();
+          modal.style.display = "none";
+          thankYouModal.style.display = "block";
+        };
+
+        closeThankYouModalButton.onclick = () => {
+          thankYouModal.style.display = "none";
+        };
+
+        closeThankYouModalButton.onclick = () => {
+          thankYouModal.style.display = "none";
+        };
+
+        closeModalButton.onclick = () => {
+          modal.style.display = "none";
+        };
+      });
     </script>
   </body>
 </html>
