@@ -25,6 +25,41 @@
         .find('input[data-sf-role="ajax-submit-url"]')
         .val();
 
+      // Create modal HTML
+      var modalHtml = `
+                <div id="modal-popup" class="modal" style="display:none;">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <div id="modal-message"></div>
+                    </div>
+                </div>
+            `;
+
+      // Append modal to the body
+      $("body").append(modalHtml);
+
+      // Modal popup elements
+      var modal = $("#modal-popup");
+      var modalMessage = $("#modal-message");
+      var closeButton = $(".close-button");
+
+      // Function to show the modal with a message
+      function showModal(message) {
+        modalMessage.html(message);
+        modal.show();
+      }
+
+      // Close modal on clicking close button or outside the modal
+      closeButton.click(function () {
+        modal.hide();
+      });
+
+      $(window).click(function (event) {
+        if ($(event.target).is(modal)) {
+          modal.hide();
+        }
+      });
+
       var submitClickHandler = function () {
         var parentForm = formContainer.closest("form");
         var parentFormChildren = parentForm.children();
@@ -85,19 +120,19 @@
                   responseJson.message !== ""
                 ) {
                   successMessage.text(responseJson.message);
-                  successMessage.show();
+                  showModal(successMessage.html());
                   loadingImg.hide();
                 } else {
                   if (redirectUrl) {
                     document.location.replace(redirectUrl);
                   } else {
-                    successMessage.show();
+                    showModal(successMessage.html());
                     loadingImg.hide();
                   }
                 }
               } else {
                 generalErrorMessage.text(responseJson.error);
-                generalErrorMessage.show();
+                showModal(generalErrorMessage.html());
                 fieldsContainer.show();
                 fieldsContainer
                   .find('[data-sf-role="captcha-refresh-button"]')
@@ -108,7 +143,7 @@
           };
 
           loadingImg.show();
-          //fieldsContainer.hide();
+          // Do not hide the fields container
           errorMessage.hide();
           generalErrorMessage.hide();
 
