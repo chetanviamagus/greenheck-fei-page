@@ -1,0 +1,202 @@
+@model PowerBI.Models.PBIConfiguration
+@{ ViewBag.Title = "Index";
+    Layout = null;
+}
+<script src="~/Content/GreenheckStyles/pbi/powerbi.min.js"></script>
+<script src="~/Content/GreenheckStyles/pbi/jquery.min.js"></script>
+<link href="~/Content/GreenheckStyles/pbi/style.css" rel="stylesheet" />
+
+<style>
+    .tabs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .tab-button {
+        background-color: #fff;
+        color: #075697;
+        border: 1px solid #075697;
+        padding: 6px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        margin: 0 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .tab-button:hover, .tab-button:focus {
+            background-color: #075697de !important;
+            color: #fff !important;
+        }
+
+        .tab-button.active {
+            background-color: #075697;
+            color: #fff;
+        }
+
+    #iframeContainer {
+        margin-top: 20px;
+    }
+
+    iframe {
+        width: 100%;
+        height: 100%;
+        min-height: 786px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<div class="tabs">
+    @foreach (var item in Model.ReportList)
+    {
+        <a class="tab-button" href="javascript:void(0)" onclick="fnGetPDIReportAjax('@item.ReportId');return false;">
+            @item.ReportName
+        </a>
+    }
+</div>
+<div id="iframeContainer" class="width-100per"></div>
+
+<script>
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const iframeContainer = document.getElementById('iframeContainer');
+
+    // Add click event listener to each tab button
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            // Remove active class from all buttons
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+
+            // Add active class to clicked button
+            this.classList.add('active');
+
+            // Load iframe based on the data-url attribute of the clicked tab
+            const url = this.getAttribute('data-url');
+ 
+        });
+    });
+
+    // Trigger the first tab's click event on page load to show default content
+    window.onload = function () {
+        var firstTab = document.querySelector('.tab-button'); // Selects the first element with class 'tab-button'
+        if (firstTab) {
+            firstTab.click(); // Click the first tab button on page load
+        }
+    };
+
+
+    function fnGetPDIReportAjax(ReportIdParam)
+    {
+        debugger
+        $.ajax({
+            url: '@Url.Action("GetPBIReport", "GhPBIController")',
+            type: 'GET',
+            data: { ReportIdParam: ReportIdParam},
+            cache: "no-cache",
+            success: function (data) {
+                debugger
+                document.getElementById("iframeContainer").src = "";
+                loadPBI(data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                showMessage("ERROR", "PowerBI Report error <br/>" + xhr.responseText);
+            }
+        });
+
+    }
+
+    function fnGetPDIReport(ReportIdParam)
+    {
+        debugger
+        $.ajax({
+            url: '@Url.Action("GetPBIReport", "GhPBIController")',
+            type: 'GET',
+            data: { ReportIdParam: ReportIdParam},
+            cache: "no-cache",
+            dataType: 'html',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                $('#iframeContainer').html("");
+                $('#iframeContainer').html(data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                showMessage("ERROR", "Release Summary Error  encountered <br/>" + xhr.responseText);
+            }
+        });
+    }
+
+    function loadPBI(data) {
+        if (data.model.EmbedReports !== null) {
+            debugger
+            // Get a reference to the embedded report HTML element
+            let reportContainer = $('#iframeContainer')[0];
+            // Read embed application token from Model
+            let accessToken = data.model.EmbedToken.Token;
+            debugger
+            // You can embed different model as per your need by changing the index
+            // Read embed URL from Model
+
+            let embedUrl = data.model.EmbedReports[0].EmbedUrl;
+            // Read report Id from Model
+            let embedReportId = "";
+            embedReportId = data.model.EmbedReports[0].ReportId;
+            // Use the token expiry to regenerate Embed token for seamless end user experience
+            // Refer https://aka.ms/RefreshEmbedToken
+            let tokenExpiry = data.model.EmbedToken.Expiration;
+            // Get models. models contains enums that can be used.
+            let models = window['powerbi-client'].models;
+            // Embed configuration used to describe the what and how to embed.
+            // This object is used when calling powerbi.embed.
+            // This also includes settings and options such as filters.
+            // You can find more information at https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details.
+            let config = {
+                type: 'report',
+                tokenType: models.TokenType.Embed,
+                accessToken: accessToken,
+                embedUrl: embedUrl,
+                id: embedReportId,
+                permissions: models.Permissions.All,
+                settings: {
+                    // Enable this setting to remove gray shoulders from embedded report
+                    // background: models.BackgroundType.Transparent,
+                    filterPaneEnabled: true,
+                    navContentPaneEnabled: true
+                }
+            };
+            var _officeids = data.officeids;
+            let basicFilter = {
+                $schema: "http://powerbi.com/product/schema#basic",
+                target: {
+                    table: "RepOffice",
+                    column: "OFFICE"
+                },
+                operator: "In",
+                //values: ["0090", "0490"],
+                //values: ["0659", "8247"],
+                values: _officeids,
+                filterType: 1,
+                displaySettings: {
+                    isLockedInViewMode: true,
+                    isHiddenInViewMode: true,
+                    displayName: "Logged in User"
+                }
+                //requireSingleSelection: true // Limits selection of values to one.
+            };
+            if (_officeids.length > 0)
+                config.filters = [basicFilter];
+            // Embed the report and display it within the div container.
+            let report = powerbi.embed(reportContainer, config);
+        }
+        else {
+            document.getElementById("iframeContainer").innerHTML = "NO Report Available";
+        }
+
+    }
+</script>
+
+
+
+
+
