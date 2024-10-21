@@ -1,5 +1,6 @@
 @model PowerBI.Models.PBIConfiguration
-@{ ViewBag.Title = "Index";
+@{
+    ViewBag.Title = "Index";
     Layout = null;
 }
 <script src="~/Content/GreenheckStyles/pbi/powerbi.min.js"></script>
@@ -25,15 +26,16 @@
         transition: background-color 0.3s ease;
     }
 
-        .tab-button:hover, .tab-button:focus {
-            background-color: #075697de !important;
-            color: #fff !important;
-        }
+    .tab-button:hover,
+    .tab-button:focus {
+        background-color: #075697de !important;
+        color: #fff !important;
+    }
 
-        .tab-button.active {
-            background-color: #075697;
-            color: #fff;
-        }
+    .tab-button.active {
+        background-color: #075697;
+        color: #fff;
+    }
 
     #iframeContainer {
         margin-top: 20px;
@@ -47,6 +49,7 @@
         border-radius: 5px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
+
     #loader {
         border: 8px solid #f3f3f3;
         border-top: 8px solid #3498db;
@@ -54,18 +57,24 @@
         width: 60px;
         height: 60px;
         animation: spin 1s linear infinite;
-        display: none; /* Initially hidden */
+        display: none;
+        /* Initially hidden */
         margin: 50px auto;
     }
 
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
+    @@keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
 
+        100% {
+            transform: rotate(360deg);
+        }
+    }
 </style>
 
 <div class="tabs">
+
     @foreach (var item in Model.ReportList)
     {
         <a class="tab-button" href="javascript:void(0)" onclick="fnGetPDIReportAjax('@item.ReportId');return false;">
@@ -73,6 +82,7 @@
         </a>
     }
 </div>
+
 <div id="iframeContainer" class="width-100per">
     <div id="loader"></div> <!-- Loader will be displayed while iframe loads -->
 </div>
@@ -93,7 +103,7 @@
 
             // Load iframe based on the data-url attribute of the clicked tab
             const url = this.getAttribute('data-url');
- 
+
         });
     });
 
@@ -104,7 +114,6 @@
             firstTab.click(); // Click the first tab button on page load
         }
     };
-
 
     function fnGetPDIReportAjax(ReportIdParam) {
         document.getElementById('loader').style.display = 'block';  // Show the loader before loading starts
@@ -125,16 +134,15 @@
                 showMessage("ERROR", "PowerBI Report error <br/>" + xhr.responseText);
             }
         });
+
     }
 
+    function fnGetPDIReport(ReportIdParam) {
 
-    function fnGetPDIReport(ReportIdParam)
-    {
-        
         $.ajax({
             url: '@Url.Action("GetPBIReport", "GhPBIController")',
             type: 'GET',
-            data: { ReportIdParam: ReportIdParam},
+            data: { ReportIdParam: ReportIdParam },
             cache: "no-cache",
             dataType: 'html',
             contentType: 'application/json; charset=utf-8',
@@ -150,12 +158,12 @@
 
     function loadPBI(data) {
         if (data.model.EmbedReports !== null) {
-            
+
             // Get a reference to the embedded report HTML element
             let reportContainer = $('#iframeContainer')[0];
             // Read embed application token from Model
             let accessToken = data.model.EmbedToken.Token;
-            
+
             // You can embed different model as per your need by changing the index
             // Read embed URL from Model
 
@@ -216,8 +224,3 @@
 
     }
 </script>
-
-
-
-
-
