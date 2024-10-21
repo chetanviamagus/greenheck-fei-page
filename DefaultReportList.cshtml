@@ -47,6 +47,22 @@
         border-radius: 5px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
+    #loader {
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #3498db;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 1s linear infinite;
+        display: none; /* Initially hidden */
+        margin: 50px auto;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
 </style>
 
 <div class="tabs">
@@ -57,7 +73,10 @@
         </a>
     }
 </div>
-<div id="iframeContainer" class="width-100per"></div>
+<div id="iframeContainer" class="width-100per">
+    <div id="loader"></div> <!-- Loader will be displayed while iframe loads -->
+</div>
+
 
 <script>
     const tabButtons = document.querySelectorAll('.tab-button');
@@ -87,29 +106,31 @@
     };
 
 
-    function fnGetPDIReportAjax(ReportIdParam)
-    {
-        debugger
+    function fnGetPDIReportAjax(ReportIdParam) {
+        $('#loader').show();  // Show the loader before loading starts
+        $('#iframeContainer').find('iframe').hide(); // Hide the iframe
+
         $.ajax({
             url: '@Url.Action("GetPBIReport", "GhPBIController")',
             type: 'GET',
-            data: { ReportIdParam: ReportIdParam},
+            data: { ReportIdParam: ReportIdParam },
             cache: "no-cache",
             success: function (data) {
-                debugger
-                document.getElementById("iframeContainer").src = "";
+                $('#loader').hide();  // Hide the loader when content is ready
+                $('#iframeContainer').find('iframe').show();  // Show the iframe
                 loadPBI(data);
             },
             error: function (xhr, ajaxOptions, thrownError) {
+                $('#loader').hide();  // Hide the loader on error
                 showMessage("ERROR", "PowerBI Report error <br/>" + xhr.responseText);
             }
         });
-
     }
+
 
     function fnGetPDIReport(ReportIdParam)
     {
-        debugger
+        
         $.ajax({
             url: '@Url.Action("GetPBIReport", "GhPBIController")',
             type: 'GET',
@@ -129,12 +150,12 @@
 
     function loadPBI(data) {
         if (data.model.EmbedReports !== null) {
-            debugger
+            
             // Get a reference to the embedded report HTML element
             let reportContainer = $('#iframeContainer')[0];
             // Read embed application token from Model
             let accessToken = data.model.EmbedToken.Token;
-            debugger
+            
             // You can embed different model as per your need by changing the index
             // Read embed URL from Model
 
