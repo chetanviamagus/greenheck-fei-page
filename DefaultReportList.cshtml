@@ -107,8 +107,8 @@
 
 
     function fnGetPDIReportAjax(ReportIdParam) {
-        $('#loader').show();  // Show the loader before loading starts
-        $('#iframeContainer').find('iframe').hide(); // Hide the iframe
+        document.getElementById('loader').style.display = 'block';  // Show the loader before loading starts
+        document.querySelector("#iframeContainer > iframe").style.display = 'none'; // Hide the iframe
 
         $.ajax({
             url: '@Url.Action("GetPBIReport", "GhPBIController")',
@@ -116,12 +116,12 @@
             data: { ReportIdParam: ReportIdParam },
             cache: "no-cache",
             success: function (data) {
-                $('#loader').hide();  // Hide the loader when content is ready
-                $('#iframeContainer').find('iframe').show();  // Show the iframe
+                document.getElementById('loader').style.display = 'none';  // Hide the loader when content is ready
+                document.querySelector("#iframeContainer > iframe").style.display = 'block'; // Show the iframe                
                 loadPBI(data);
             },
             error: function (xhr, ajaxOptions, thrownError) {
-                $('#loader').hide();  // Hide the loader on error
+                document.getElementById('loader').style.display = 'none';  // Hide the loader on error
                 showMessage("ERROR", "PowerBI Report error <br/>" + xhr.responseText);
             }
         });
