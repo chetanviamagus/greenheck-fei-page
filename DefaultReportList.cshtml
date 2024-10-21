@@ -82,12 +82,14 @@
         </a>
     }
 </div>
-
+<div id="loader"></div> <!-- Loader will be displayed while iframe loads -->
 <div id="iframeContainer" class="width-100per">
-    <div id="loader"></div> <!-- Loader will be displayed while iframe loads -->
+
 </div>
 
+@*<div id="embedContainer" class="width-100per">
 
+</div>*@
 <script>
     const tabButtons = document.querySelectorAll('.tab-button');
     const iframeContainer = document.getElementById('iframeContainer');
@@ -117,7 +119,7 @@
 
     function fnGetPDIReportAjax(ReportIdParam) {
         document.getElementById('loader').style.display = 'block';  // Show the loader before loading starts
-        document.querySelector("#iframeContainer > iframe").style.display = 'none'; // Hide the iframe
+        document.getElementById('iframeContainer').style.display = 'none';  // Hide the iframe
 
         $.ajax({
             url: '@Url.Action("GetPBIReport", "GhPBIController")',
@@ -126,11 +128,12 @@
             cache: "no-cache",
             success: function (data) {
                 document.getElementById('loader').style.display = 'none';  // Hide the loader when content is ready
-                document.querySelector("#iframeContainer > iframe").style.display = 'block'; // Show the iframe                
+                document.getElementById('iframeContainer').style.display = 'block'; // Show the iframe                
                 loadPBI(data);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 document.getElementById('loader').style.display = 'none';  // Hide the loader on error
+                document.getElementById('iframeContainer').style.display = 'block'; // Show the iframe
                 showMessage("ERROR", "PowerBI Report error <br/>" + xhr.responseText);
             }
         });
